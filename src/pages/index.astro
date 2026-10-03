@@ -8,7 +8,9 @@
   <meta http-equiv="refresh" content="0;url=/en/" />
   <link rel="canonical" href="https://www.smgsj.org/en/" />
   <title>St. Maria Goretti Parish</title>
-  <script>
+  <style>html{visibility:hidden}</style>
+  <noscript><style>html{visibility:visible}</style></noscript>
+  <script is:inline>
     // Runs before first paint: cookie choice first (remembered language),
     // then browser language, else English. Preserves login/anchor fragments.
     try {
@@ -19,7 +21,7 @@
         var nav = (navigator.language || 'en').slice(0, 2).toLowerCase();
         location.replace('/' + (nav === 'es' ? 'es' : nav === 'vi' ? 'vi' : 'en') + '/' + h);
       }
-    } catch (e) { /* fall through to links below (no JS) */ }
+    } catch (e) { document.documentElement.style.visibility = 'visible'; /* fall through to links below (no JS) */ }
   </script>
 </head>
 <body>
