@@ -61,30 +61,20 @@ const showNotice = Boolean(notice.enabled) && noticeText.length > 0;
   </main>
   <Footer lang={lang} ui={ui} />
   <script>
-    // Forward invite/recovery logins to the CMS. Runs both immediately and on
-    // init in case the widget already initialized before this script ran.
+    // Invite/recovery tokens are handled strictly AFTER the widget initializes;
+    // opening earlier renders an empty overlay. The widget also auto-detects
+    // tokens on init — this only guarantees the right modal + /admin landing.
     try {
-      var __smgTokenHandled = false;
-      var __smgHandleTokens = function () {
-        if (__smgTokenHandled) return;
-        var h = location.hash || '';
-        if (!window.netlifyIdentity) return;
-        if (/invite_token|confirmation_token/.test(h)) {
-          __smgTokenHandled = true;
-          window.netlifyIdentity.open('signup');
-        } else if (/recovery_token|email_change_token/.test(h)) {
-          __smgTokenHandled = true;
-          window.netlifyIdentity.open('login');
-        }
-      };
       if (window.netlifyIdentity) {
         window.netlifyIdentity.on('init', function (user) {
-          __smgHandleTokens();
-          if (!user) window.netlifyIdentity.on('login', function () { document.location.href = '/admin/'; });
+          var h = location.hash || '';
+          if (!user) {
+            if (/invite_token|confirmation_token/.test(h)) window.netlifyIdentity.open('signup');
+            else if (/recovery_token|email_change_token/.test(h)) window.netlifyIdentity.open('login');
+            window.netlifyIdentity.on('login', function () { document.location.href = '/admin/'; });
+          }
         });
       }
-      if (document.readyState === 'complete' || document.readyState === 'interactive') __smgHandleTokens();
-      else document.addEventListener('DOMContentLoaded', __smgHandleTokens);
     } catch(e) {}
   </script>
   <script>

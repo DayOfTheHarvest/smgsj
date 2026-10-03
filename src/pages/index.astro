@@ -13,6 +13,23 @@
 </head>
 <body>
   <p><a href="/en/">English</a> · <a href="/es/">Español</a> · <a href="/vi/">Tiếng Việt</a></p>
+  <script is:inline src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <script>
+    // Same post-init token handling as the main layout: the invite link lands
+    // here first, so the signup modal can open even before the redirect runs.
+    try {
+      if (window.netlifyIdentity) {
+        window.netlifyIdentity.on('init', function (user) {
+          var h = location.hash || '';
+          if (!user) {
+            if (/invite_token|confirmation_token/.test(h)) window.netlifyIdentity.open('signup');
+            else if (/recovery_token|email_change_token/.test(h)) window.netlifyIdentity.open('login');
+            window.netlifyIdentity.on('login', function () { document.location.href = '/admin/'; });
+          }
+        });
+      }
+    } catch (e) {}
+  </script>
   <script>
     // Preserve #invite_token / #recovery_token fragments: invite emails land on
     // /#invite_token=… and the login code on the target page needs the hash.
