@@ -41,8 +41,7 @@ collections:
         widget: markdown
         required: false
         hint: 'Main content. Bold, italic, lists, links, and pictures only. For every picture, fill in its description box so blind visitors hear what it shows.'
-        buttons: [bold, italic, list, bulleted-list, numbered-list, link, image]
-        editor_components: []
+        buttons: [bold, italic, bulleted-list, numbered-list, link]
       - label: 'Title (Español, optional)'
         name: title_es
         widget: string
@@ -53,8 +52,7 @@ collections:
         widget: markdown
         required: false
         hint: 'Leave empty to show English + banner.'
-        buttons: [bold, italic, list, bulleted-list, numbered-list, link, image]
-        editor_components: []
+        buttons: [bold, italic, bulleted-list, numbered-list, link]
       - label: 'Title (Tiếng Việt, optional)'
         name: title_vi
         widget: string
@@ -65,8 +63,7 @@ collections:
         widget: markdown
         required: false
         hint: 'Leave empty to show English + banner.'
-        buttons: [bold, italic, list, bulleted-list, numbered-list, link, image]
-        editor_components: []
+        buttons: [bold, italic, bulleted-list, numbered-list, link]
       - label: 'Last updated'
         name: updated
         widget: datetime

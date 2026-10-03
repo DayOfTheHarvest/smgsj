@@ -38,6 +38,9 @@ const showNotice = Boolean(notice.enabled) && noticeText.length > 0;
   <link rel="alternate" hreflang="vi" href={`${base}/vi${slug && slug !== 'home' ? '/' + slug : ''}`} />
   <link rel="alternate" hreflang="x-default" href={`${base}/en${slug && slug !== 'home' ? '/' + slug : ''}`} />
   <link rel="icon" href="/favicon.ico" />
+  <!-- Netlify Identity: catches invite/recovery tokens site-wide (invite emails
+       land on /#invite_token=… with no login code) and forwards to /admin/. -->
+  <script is:inline src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
   <!-- Visitor stats: undecided (old GA UA-135786317-1 is dead). Either register for Cloudflare Web Analytics and replace SMGSJ_REPLACE_ME, or swap in a DNS-independent counter. See DEPLOY.md. -->
   <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "SMGSJ_REPLACE_ME"}'></script>
 </head>
@@ -57,6 +60,16 @@ const showNotice = Boolean(notice.enabled) && noticeText.length > 0;
     <slot />
   </main>
   <Footer lang={lang} ui={ui} />
+  <script>
+    // Forward invite/recovery logins to the CMS.
+    try {
+      if (window.netlifyIdentity) {
+        window.netlifyIdentity.on('init', (user) => {
+          if (!user) window.netlifyIdentity.on('login', () => { document.location.href = '/admin/'; });
+        });
+      }
+    } catch(e) {}
+  </script>
   <script>
     // Remember: cookie stores topbar language choice for next visit to /
     try {
