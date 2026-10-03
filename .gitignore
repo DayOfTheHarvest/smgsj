@@ -1,0 +1,18 @@
+# ---> Node / build output: never commit these
+node_modules/
+dist/
+.astro/
+*.log
+.DS_Store
+Thumbs.db
+
+# ---> Local editor / OS noise
+.vscode/*
+!.vscode/extensions.json
+.idea/
+
+# ---> Secrets: service keys must NEVER be committed.
+# Keep tokens in Netlify environment variables, not in files.
+.env
+.env.*
+!.env.example

@@ -1,0 +1,18 @@
+---
+import { EXTERNAL } from '../config';
+interface Props { ui: any; }
+const { ui } = Astro.props;
+---
+<section aria-label={ui.stayTitle}>
+  <h2>{ui.stayTitle}</h2>
+  <p>{ui.stayText}</p>
+  <form action={EXTERNAL.flocknote_signup} method="post" target="_blank" rel="noopener">
+    <div class="grid grid-cols-1 gap-3 text-left sm:grid-cols-2">
+      <p class="m-0"><label>{ui.firstName}<br /><input name="fname" type="text" autocomplete="given-name" placeholder={ui.firstName} /></label></p>
+      <p class="m-0"><label>{ui.lastName}<br /><input name="lname" type="text" autocomplete="family-name" placeholder={ui.lastName} /></label></p>
+      <p class="m-0"><label>{ui.emailAddress}<br /><input name="email" type="email" autocomplete="email" placeholder={ui.emailAddress} /></label></p>
+      <p class="m-0"><label>{ui.mobilePhone}<br /><input name="mobile_phone" type="tel" autocomplete="tel" placeholder={ui.mobilePhone} /></label></p>
+    </div>
+    <p><button class="btn btn-gold" type="submit">{ui.signUp}</button></p>
+  </form>
+</section>

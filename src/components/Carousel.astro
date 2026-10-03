@@ -1,0 +1,78 @@
+---
+import slidesData from '../data/announcements.json';
+import { resolveLink, type Lang } from '../config';
+interface Props { lang: Lang; ui: any; }
+const { lang, ui } = Astro.props;
+const slides = (slidesData as any).slides as Array<{ image: string; alt: string; link: string; caption: string; seconds?: number }>;
+const hrefFor = (link: string) => resolveLink(link, lang);
+---
+{slides.length > 0 && (
+  <section class="carousel" aria-label="Announcements" data-carousel>
+    <div class="carousel-viewport">
+      <ul class="carousel-track" data-track>
+        {slides.map((s, i) => (
+          <li class="carousel-slide" data-slide data-seconds={s.seconds || 5} aria-hidden={i !== 0 ? 'true' : 'false'}>
+            <a href={hrefFor(s.link)} tabindex={i !== 0 ? -1 : undefined}>
+              <img src={s.image} alt={s.alt} width={s.width || 1920} height={s.height || 480} loading={i === 0 ? 'eager' : 'lazy'} />
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+    {slides.length > 1 && (
+      <>
+        <button type="button" class="carousel-arrow carousel-prev" data-prev aria-label={ui.prevSlide}>‹</button>
+        <button type="button" class="carousel-arrow carousel-next" data-next aria-label={ui.nextSlide}>›</button>
+        <div class="carousel-dots" role="group" aria-label="Choose slide">
+          {slides.map((s, i) => (
+            <button type="button" data-dot={i} aria-label={`${ui.showSlide} ${i + 1}: ${s.caption}`} aria-current={i === 0 ? 'true' : 'false'}></button>
+          ))}
+        </div>
+      </>
+    )}
+  </section>
+)}
+<script>
+(function () {
+  var root = document.querySelector('[data-carousel]');
+  if (!root) return;
+  var track = root.querySelector('[data-track]');
+  var slides = root.querySelectorAll('[data-slide]');
+  var dots = root.querySelectorAll('[data-dot]');
+  var prev = root.querySelector('[data-prev]');
+  var next = root.querySelector('[data-next]');
+  if (!track || slides.length < 2) return;
+  var idx = 0, timer = null;
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function show(n) {
+    idx = (n + slides.length) % slides.length;
+    track.style.transform = 'translateX(-' + idx * 100 + '%)';
+    for (var i = 0; i < slides.length; i++) {
+      var active = i === idx;
+      slides[i].setAttribute('aria-hidden', String(!active));
+      var link = slides[i].querySelector('a');
+      if (link) link.tabIndex = active ? 0 : -1;
+      if (dots[i]) dots[i].setAttribute('aria-current', String(active));
+    }
+  }
+  function stop() { if (timer) { clearTimeout(timer); timer = null; } }
+  function start() {
+    if (reduceMotion || timer) return;
+    var secs = parseFloat(slides[idx].getAttribute('data-seconds')) || 5;
+    timer = setTimeout(function () { show(idx + 1); start(); }, secs * 1000);
+  }
+  function go(n) { stop(); show(n); start(); }
+  if (prev) prev.addEventListener('click', function () { go(idx - 1); });
+  if (next) next.addEventListener('click', function () { go(idx + 1); });
+  for (var d = 0; d < dots.length; d++) {
+    (function (btn, n) {
+      btn.addEventListener('click', function () { go(n); });
+    })(dots[d], d);
+  }
+  root.addEventListener('mouseenter', stop);
+  root.addEventListener('mouseleave', start);
+  root.addEventListener('focusin', stop);
+  root.addEventListener('focusout', start);
+  start();
+})();
+</script>

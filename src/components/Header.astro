@@ -1,0 +1,104 @@
+---
+import { EXTERNAL, PHONE, ADDRESS, LOGO, resolveLink, type Lang } from '../config';
+import navData from '../data/navigation.json';
+interface Props { lang: Lang; slug: string; ui: any; }
+const { lang, slug, ui } = Astro.props;
+const tel = PHONE.replace(/[^0-9]/g, '');
+const langPath = slug && slug !== 'home' ? '/' + slug + '/' : '/';
+const nav = navData as any;
+const hrefFor = (href: string) => resolveLink(href, lang);
+const groups = (nav.groups as Array<any>).map((g) => ({
+  label: g.label[lang] || g.label.en,
+  href: hrefFor(g.href),
+  children: (g.children as Array<any>).map((c) => ({
+    label: c.label[lang] || c.label.en,
+    href: hrefFor(c.href),
+  })),
+}));
+const quickLinks = (nav.quick_links as Array<any>).map((q) => ({
+  label: q.label[lang] || q.label.en,
+  href: hrefFor(q.href),
+}));
+---
+<div class="topbar">
+  <div class="wrap flex min-h-[40px] flex-wrap items-center justify-between gap-2 py-1">
+    <span class="top-addr">{ADDRESS}</span>
+    <span class="ml-auto flex items-center gap-3">
+      <a href={EXTERNAL.facebook} aria-label="Facebook" class="text-slate-300 no-underline hover:text-white"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" /></svg></a>
+      <a href={EXTERNAL.youtube} aria-label="YouTube" class="text-slate-300 no-underline hover:text-white"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-1.92 29 29 0 0 0 .46-5.33 29 29 0 0 0-.46-5.33z" /><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" /></svg></a>
+      <a href={`tel:${tel}`} class="font-semibold text-white no-underline">✆ {PHONE}</a>
+    </span>
+  </div>
+</div>
+<header class="sitebar">
+  <div class="wrap flex min-h-[72px] flex-wrap items-center gap-3 py-2">
+    <a class="mr-auto flex items-center gap-2 text-white no-underline hover:text-white" href={`/${lang}/`}>
+      <img class="brand-logo" src={LOGO} alt="St. Maria Goretti Parish logo" width="56" height="56" />
+      <span>
+        <span class="brand-name">St. Maria Goretti</span><br />
+        <span class="brand-sub">Catholic Parish · San Jose</span>
+      </span>
+    </a>
+    <div class="flex flex-wrap items-center gap-2">
+      <span class="site-langs" role="group" aria-label="Language / Idioma / Ngôn ngữ">
+        {(['en','es','vi'] as const).map((l) => (
+          <a href={`/${l}${langPath}`} aria-current={l === lang ? 'page' : undefined} lang={l}>
+            {l === 'en' ? 'English' : l === 'es' ? 'Español' : 'Tiếng Việt'}
+          </a>
+        ))}
+      </span>
+      <a class="btn btn-light" href={`tel:${tel}`}>✆ {ui.nav.call}</a>
+      <a class="btn btn-gold" href={EXTERNAL.giving}>♥ {ui.nav.giving}</a>
+      <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="mobileNav">☰ Menu</button>
+    </div>
+  </div>
+  <nav class="navbar" aria-label="Primary">
+    <div class="wrap flex flex-wrap gap-1">
+      {groups.map((g) => (
+        <div class="nav-drop">
+          <a href={g.href} aria-haspopup={g.children.length > 0 ? 'true' : undefined}>{g.label}</a>
+          {g.children.length > 0 && (
+            <div class="nav-menu" role="menu">
+              {g.children.map((c) => <a href={c.href} role="menuitem">{c.label}</a>)}
+            </div>
+          )}
+        </div>
+      ))}
+      {quickLinks.map((q) => <a href={q.href} class="inline-block px-3 py-3 text-[0.95rem] font-semibold text-slate-200 no-underline hover:bg-white/10 hover:text-white">{q.label}</a>)}
+    </div>
+  </nav>
+  <nav class="mobile-nav border-b-[3px] border-gold bg-white px-4 pb-4 pt-1 text-ink" id="mobileNav" hidden aria-label="Mobile">
+    {groups.map((g) => (
+      <details class="border-b border-line">
+        <summary class="flex min-h-[44px] cursor-pointer items-center font-bold text-navy">{g.label}</summary>
+        <div class="grid gap-1 pb-3 pl-2">
+          <a href={g.href}>{g.label} — overview</a>
+          {g.children.map((c) => <a href={c.href} class="py-2">{c.label}</a>)}
+        </div>
+      </details>
+    ))}
+    <div class="mt-1">
+      {quickLinks.map((q) => (
+        <a class="mobile-link" href={q.href}>{q.label}</a>
+      ))}
+    </div>
+  </nav>
+</header>
+<script>
+  const btn = document.getElementById('menuBtn');
+  const nav = document.getElementById('mobileNav');
+  btn?.addEventListener('click', () => {
+    const opening = nav?.hasAttribute('hidden');
+    if (opening) { nav?.removeAttribute('hidden'); btn?.setAttribute('aria-expanded', 'true'); }
+    else { nav?.setAttribute('hidden', ''); btn?.setAttribute('aria-expanded', 'false'); }
+  });
+  // Remember language choice for next visit to /
+  document.querySelectorAll('.site-langs a').forEach((a) => {
+    a.addEventListener('click', () => {
+      try {
+        const l = (a.getAttribute('href') || '/en/').split('/')[1];
+        document.cookie = `smg-lang=${l};path=/;max-age=31536000`;
+      } catch(e) {}
+    });
+  });
+</script>

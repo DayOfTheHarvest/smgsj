@@ -1,0 +1,221 @@
+{
+  "week_of": "2026-10-11",
+  "masses": [
+    {
+      "service": "Saturday",
+      "day": "Saturday",
+      "time": "4:00pm",
+      "suffix": "",
+      "lang": "English",
+      "location": "Church",
+      "note": "",
+      "presider": "Fr. Pedro P."
+    },
+    {
+      "service": "Saturday",
+      "day": "Saturday",
+      "time": "5:30pm",
+      "suffix": "",
+      "lang": "Vietnamese",
+      "location": "Church",
+      "note": "Livestream",
+      "presider": "Cha Thông"
+    },
+    {
+      "service": "Saturday",
+      "day": "Saturday",
+      "time": "7:00pm",
+      "suffix": "",
+      "lang": "Español",
+      "location": "Church",
+      "note": "",
+      "presider": "Padre Pedro T."
+    },
+    {
+      "service": "Sunday",
+      "day": "Sunday",
+      "time": "7:00am",
+      "suffix": "",
+      "lang": "English",
+      "location": "Church",
+      "note": "",
+      "presider": "Fr. Pedro P."
+    },
+    {
+      "service": "Sunday",
+      "day": "Sunday",
+      "time": "8:00am",
+      "suffix": "",
+      "lang": "Vietnamese",
+      "location": "Church",
+      "note": "",
+      "presider": "Cha Thông"
+    },
+    {
+      "service": "Sunday",
+      "day": "Sunday",
+      "time": "9:30am",
+      "suffix": "",
+      "lang": "English",
+      "location": "Church",
+      "note": "Livestream",
+      "presider": "Fr. Pedro P."
+    },
+    {
+      "service": "Sunday",
+      "day": "Sunday",
+      "time": "9:30am",
+      "suffix": "- Patio",
+      "lang": "Vietnamese",
+      "location": "Patio",
+      "note": "",
+      "presider": "Cha Chữ"
+    },
+    {
+      "service": "Sunday",
+      "day": "Sunday",
+      "time": "11:00am",
+      "suffix": "",
+      "lang": "Vietnamese",
+      "location": "Church",
+      "note": "",
+      "presider": "Cha Chữ"
+    },
+    {
+      "service": "Sunday",
+      "day": "Sunday",
+      "time": "12:30pm",
+      "suffix": "",
+      "lang": "Español",
+      "location": "Church",
+      "note": "",
+      "presider": "Padre Pedro T."
+    },
+    {
+      "service": "Sunday",
+      "day": "Sunday",
+      "time": "2:30pm",
+      "suffix": "",
+      "lang": "Vietnamese",
+      "location": "Church",
+      "note": "",
+      "presider": "Cha Thông"
+    },
+    {
+      "service": "Sunday",
+      "day": "Sunday",
+      "time": "4:00pm",
+      "suffix": "",
+      "lang": "English",
+      "location": "Church",
+      "note": "",
+      "presider": "Fr. Pedro P."
+    },
+    {
+      "service": "Sunday",
+      "day": "Sunday",
+      "time": "5:30pm",
+      "suffix": "",
+      "lang": "Vietnamese",
+      "location": "Church",
+      "note": "",
+      "presider": "Cha Thông"
+    },
+    {
+      "service": "Sunday",
+      "day": "Sunday",
+      "time": "7:00pm",
+      "suffix": "",
+      "lang": "Español",
+      "location": "Church",
+      "note": "",
+      "presider": "Padre Pedro T."
+    },
+    {
+      "service": "Weekday",
+      "day": "Mon-Fri",
+      "time": "9:00am",
+      "suffix": "",
+      "lang": "English",
+      "location": "Church",
+      "note": "Wednesdays OLPH Novena",
+      "presider": ""
+    },
+    {
+      "service": "Weekday",
+      "day": "Mon-Fri",
+      "time": "10:00am",
+      "suffix": "",
+      "lang": "Vietnamese",
+      "location": "Church",
+      "note": "",
+      "presider": ""
+    },
+    {
+      "service": "Weekday",
+      "day": "Mon-Fri",
+      "time": "12:15pm",
+      "suffix": "",
+      "lang": "Español",
+      "location": "Church",
+      "note": "",
+      "presider": ""
+    },
+    {
+      "service": "Weekday",
+      "day": "Friday",
+      "time": "7:00pm",
+      "suffix": "",
+      "lang": "Español",
+      "location": "Church",
+      "note": "",
+      "presider": ""
+    },
+    {
+      "service": "Weekday",
+      "day": "1st Friday",
+      "time": "7:00PM",
+      "suffix": "",
+      "lang": "Tagalog",
+      "location": "Divine Mercy Chapel",
+      "note": "",
+      "presider": ""
+    },
+    {
+      "service": "Saturday",
+      "day": "Saturday",
+      "time": "9:00am",
+      "suffix": "",
+      "lang": "English",
+      "location": "Church",
+      "note": "",
+      "presider": "Fr. Pedro P."
+    },
+    {
+      "service": "Saturday",
+      "day": "Saturday",
+      "time": "10:00am",
+      "suffix": "",
+      "lang": "Vietnamese",
+      "location": "Viet. Martyr's Shrine",
+      "note": "",
+      "presider": "Cha Thông"
+    },
+    {
+      "service": "Saturday",
+      "day": "Saturday",
+      "time": "12:15pm",
+      "suffix": "",
+      "lang": "Español",
+      "location": "Divine Mercy Chapel",
+      "note": "",
+      "presider": "Padre Pedro T."
+    }
+  ],
+  "display": {
+    "mode": "schedule",
+    "image": "",
+    "link": ""
+  },
+  "custom": []
+}

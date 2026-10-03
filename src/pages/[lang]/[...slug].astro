@@ -1,0 +1,119 @@
+---
+import Base from '../../layouts/Base.astro';
+import MassCards from '../../components/MassCards.astro';
+import BulletinList from '../../components/BulletinList.astro';
+import { getCollection } from 'astro:content';
+import type { Lang } from '../../config';
+import en from '../../data/ui.en.json';
+import es from '../../data/ui.es.json';
+import vi from '../../data/ui.vi.json';
+import StaffCards from '../../components/StaffCards.astro';
+import FundraiserProgress from '../../components/FundraiserProgress.astro';
+import CalendarEmbeds from '../../components/CalendarEmbeds.astro';
+import Icon from '../../components/Icon.astro';
+import { PHONE, EMAIL, EXTERNAL, ADDRESS, SHRINE_ADDRESS, resolveLink } from '../../config';
+import formsData from '../../data/forms.json';
+import galleriesData from '../../data/galleries.json';
+import { renderMd } from '../../lib/md';
+
+export async function getStaticPaths() {
+  const pages = await getCollection('pages');
+  const langs: Lang[] = ['en', 'es', 'vi'];
+  return pages
+    .filter((p) => p.slug !== 'home' && !p.data.draft)
+    .flatMap((p) => langs.map((lang) => ({ params: { lang, slug: p.slug }, props: { id: p.id } })));
+}
+const { lang, slug } = Astro.params as { lang: Lang; slug: string };
+const ui = lang === 'es' ? es : lang === 'vi' ? vi : en;
+const pages = await getCollection('pages');
+const entry = pages.find((p) => p.slug === slug);
+if (!entry) return Astro.redirect('/en/', 404);
+const titleLoc = ((entry.data as any)[`title_${lang}`] as string)?.trim()
+  || entry.data.title_en;
+const bodyLoc = ((entry.data as any)[`body_${lang}`] as string)?.trim();
+const fallback = lang !== 'en' && !bodyLoc;
+const html = renderMd(fallback ? entry.body : (bodyLoc || entry.body));
+const formList = ((formsData as any).forms as Array<any>) ?? [];
+const galleryList = ((galleriesData as any).galleries as Array<any>) ?? [];
+---
+<Base lang={lang} slug={slug} title={titleLoc} fallback={fallback}>
+  <h1>{titleLoc}</h1>
+  <article class="prose" data-pagefind-body data-pagefind-meta={`lang:${lang}`} set:html={html} />
+
+  {slug === 'mass-times' && <MassCards lang={lang} ui={ui} />}
+  <FundraiserProgress ui={ui} lang={lang} slug={slug} />
+  {slug === 'calendar' && <CalendarEmbeds ui={ui} />}
+  {slug === 'contact' && (
+    <>
+      <section aria-label="Visit us">
+        <h2>{ui.visitTitle}</h2>
+        <div class="cards">
+          <article class="card">
+            <div class="card-head"><Icon name="church" /><h3>St. Maria Goretti Parish</h3></div>
+            <p>{ADDRESS.split(',').map((p, i, arr) => <span>{p.trim()}{i < arr.length - 1 ? <br /> : null}</span>)}</p>
+            <p><a href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(ADDRESS)}`}>{ui.mapLink}</a></p>
+          </article>
+          <article class="card">
+            <div class="card-head"><Icon name="church" /><h3>Vietnamese Martyrs Shrine</h3></div>
+            <p>{SHRINE_ADDRESS.split(',').map((p, i, arr) => <span>{p.trim()}{i < arr.length - 1 ? <br /> : null}</span>)}</p>
+            <p><a href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(SHRINE_ADDRESS)}`}>{ui.mapLink}</a></p>
+          </article>
+          <article class="card">
+            <div class="card-head"><Icon name="users" /><h3>{ui.followUs}</h3></div>
+            <p class="flex flex-wrap gap-2">
+              <a class="btn btn-outline" href={EXTERNAL.facebook}>Facebook</a>
+              <a class="btn btn-outline" href={EXTERNAL.youtube}>YouTube</a>
+            </p>
+          </article>
+        </div>
+        <div class="table-scroll" style="border:0">
+          <iframe title="Map — St. Maria Goretti Parish" src="https://www.google.com/maps?q=2980+Senter+Road,+San+Jose,+CA+95111&output=embed" width="100%" height="450" loading="lazy"></iframe>
+        </div>
+      </section>
+      <section aria-label={ui.contactForm.title}>
+        <h2>{ui.contactForm.title}</h2>
+        <div class="cards">
+          <article class="card">
+            <div class="card-head"><Icon name="phone" /><h3>{ui.nav.call}</h3></div>
+            <p class="font-serif text-2xl font-bold"><a class="text-navy no-underline" href={`tel:${PHONE.replace(/[^0-9]/g, '')}`}>{PHONE}</a></p>
+          </article>
+          <article class="card">
+            <div class="card-head"><Icon name="mail" /><h3>{ui.footer.email}</h3></div>
+            <p class="text-lg font-bold"><a href={`mailto:${EMAIL}`}>{EMAIL}</a></p>
+          </article>
+          <article class="card">
+            <div class="card-head"><Icon name="users" /><h3>{ui.staffTitle}</h3></div>
+            <p><a class="btn btn-primary" href={`/${lang}/staff/`}>{ui.staffDir}</a></p>
+          </article>
+        </div>
+      </section>
+    </>
+  )}
+  {slug === 'staff' && (
+    <section aria-label="Staff directory">
+      <StaffCards lang={lang} ui={ui} />
+    </section>
+  )}
+  {slug === 'requests' && (
+    <section aria-label="External forms">
+      <ul>
+        {formList.map((f) => (
+          <li><a href={resolveLink(f.url, lang)}>{f.label}</a></li>
+        ))}
+      </ul>
+    </section>
+  )}
+  {slug === 'photos' && (
+    <section aria-label="Photo galleries">
+      <ul>
+        {galleryList.map((g) => (
+          <li>
+            {g.url?.trim() ? <a href={g.url.trim()}>{g.title}</a> : <strong>{g.title}</strong>}
+            {typeof g.photos === 'number' ? ` — ${g.photos} photos` : ''}
+          </li>
+        ))}
+      </ul>
+    </section>
+  )}
+  {slug === 'bulletins' ? <><h2>{ui.actions.bulletin}</h2><BulletinList ui={ui} /></> : null}
+</Base>

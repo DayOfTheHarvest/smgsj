@@ -1,0 +1,28 @@
+---
+import en from '../data/ui.en.json';
+import es from '../data/ui.es.json';
+import vi from '../data/ui.vi.json';
+const ui = { en, es, vi };
+const t = (lang: 'en' | 'es' | 'vi', key: string) => (ui[lang] as any)[key] || (ui.en as any)[key];
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex" />
+  <title>{t('en', 'notFoundTitle')} | St. Maria Goretti Parish</title>
+  <link rel="icon" href="/favicon.ico" />
+</head>
+<body style="margin:0;font-family:system-ui,sans-serif;background:#f5f6f8;color:#24272e">
+  <main style="max-width:40rem;margin:4rem auto;padding:0 1rem;text-align:center">
+    <p style="font-size:3rem;margin:0" aria-hidden="true">✝</p>
+    <h1>{t('en', 'notFoundTitle')} / {t('es', 'notFoundTitle')} / {t('vi', 'notFoundTitle')}</h1>
+    <p>
+      <a href="/en/">{t('en', 'notFoundEn')}</a> ·
+      <a href="/es/">{t('es', 'notFoundEs')}</a> ·
+      <a href="/vi/">{t('vi', 'notFoundVi')}</a>
+    </p>
+  </main>
+</body>
+</html>

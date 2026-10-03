@@ -1,0 +1,27 @@
+{
+  "name": "smgsj-parish",
+  "type": "module",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build && python3 scripts/sitemap.py && npm run pagefind",
+    "build:astro": "astro build",
+    "pagefind": "npx --yes pagefind --site dist 2>&1 | tail -n 5 || echo 'pagefind skipped (offline?)'",
+    "preview": "astro preview --host",
+    "migrate": "python3 scripts/migrate.py",
+    "auth:check": "python3 scripts/check-auth.py"
+  },
+  "dependencies": {
+    "astro": "^4.16.0",
+    "marked": "^18.0.14"
+  },
+  "devDependencies": {
+    "@astrojs/tailwind": "^5.1.5",
+    "tailwindcss": "^3.4.19",
+    "typescript": "^5.5.0"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

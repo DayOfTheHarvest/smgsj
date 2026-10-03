@@ -1,0 +1,23 @@
+{
+  "phone": "408-363-2300",
+  "email": "smgsj@smgsj.org",
+  "address": "2980 Senter Road, San Jose, CA 95111",
+  "emergency_en_es": "408-363-2311",
+  "emergency_vi": "408-363-2310",
+  "facility_email": "FacilityReservation@smgsj.org",
+  "giving": "https://giving.parishsoft.com/App/Giving/smggiving",
+  "payment": "https://giving.parishsoft.com/App/Form/ab8f352f-53a3-4922-9f63-fe2c269f417f",
+  "calendar_suggest": "https://www.calendarwiz.com/cwsuggest/cwsuggestform.php?crd=smgsj",
+  "calendar_view": "https://www.calendarwiz.com/smgsj",
+  "youtube": "https://www.youtube.com/@smgsjca",
+  "facebook": "https://www.facebook.com/smgsjca",
+  "flocknote": "https://smgsj.flocknote.com/",
+  "ethicspoint": "https://opcva.ethicspoint.com",
+  "ethicspoint_phone": "844-372-1691",
+  "flocknote_signup": "https://app.flocknote.com/group/346213/addToGroupFromOutside",
+  "calendar_embed": "https://www.calendarwiz.com/calendars/calendar.php?crd=smgsj&cid[]=all",
+  "today_embed": "https://www.calendarwiz.com/calendars/day.php?crd=smgsj&cid[]=all",
+  "logo": "/uploads/logo.png",
+  "site_name": "St. Maria Goretti Parish",
+  "shrine_address": "685 Singleton Road, San Jose, CA 95111"
+}

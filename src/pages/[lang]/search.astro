@@ -1,0 +1,28 @@
+---
+import Base from '../../layouts/Base.astro';
+import type { Lang } from '../../config';
+import en from '../../data/ui.en.json';
+import es from '../../data/ui.es.json';
+import vi from '../../data/ui.vi.json';
+
+export async function getStaticPaths() {
+  return [{ params: { lang: 'en' } }, { params: { lang: 'es' } }, { params: { lang: 'vi' } }];
+}
+const { lang } = Astro.params as { lang: Lang };
+const ui = lang === 'es' ? es : lang === 'vi' ? vi : en;
+---
+<Base lang={lang} slug="search" title={ui.search.label}>
+  <h1>{ui.search.label}</h1>
+  <div id="search"></div>
+  <link href="/pagefind/pagefind-ui.css" rel="stylesheet" />
+  <script is:inline src="/pagefind/pagefind-ui.js"></script>
+  <script is:inline define:vars={{ lang, searchBuilding: ui.searchBuilding }}>
+    window.addEventListener('DOMContentLoaded', () => {
+      try {
+        new window.PagefindUI({ element: '#search', showImages: false, excerptLength: 12, filters: { lang: [lang] } });
+      } catch (e) {
+        document.getElementById('search').innerHTML = '<p>' + searchBuilding + '</p>';
+      }
+    });
+  </script>
+</Base>

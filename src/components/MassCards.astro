@@ -1,0 +1,157 @@
+---
+import { MASS_ROWS, CONFESSION, locName, dayName, serviceName, SCHEDULE_DISPLAY } from '../data/mass';
+import type { Lang } from '../config';
+interface Props { lang: Lang; compact?: boolean; ui: any; }
+const { lang, compact = false, ui } = Astro.props;
+
+const chipClass = (l: string) =>
+  l === 'English' ? 'chip chip-english' : l === 'Español' ? 'chip chip-es' : l === 'Vietnamese' ? 'chip chip-vi' : 'chip chip-tagalog';
+// Autonyms: every language names itself, so chips need no translation.
+const langName = (l: string) =>
+  l === 'Vietnamese' ? 'Tiếng Việt' : l;
+
+// Weekly presiders live on each Mass row (blank = TBD). Names need no translation.
+const showPresiders = MASS_ROWS.some((r) => (r.presider || '').trim().length > 0);
+const presiderOf = (r: any): string => (r.presider || '').trim();
+
+// Home summary: day groups (Mon–Fri / Saturday / Sunday). Saturday evening
+// vigils read under Sunday; the language filter defaults to the page language
+// so one language shows at a time. All 21 Masses appear under "All" (including
+// Friday 7pm Spanish and First Friday Tagalog).
+const dayGroups = [
+  { name: ui.dayWeekday, rows: MASS_ROWS.filter((r) => r.service === 'Weekday') },
+  { name: ui.daySaturday, rows: MASS_ROWS.filter((r) => r.day === 'Saturday') },
+  { name: ui.daySunday, rows: MASS_ROWS.filter((r) => r.day === 'Sunday') },
+];
+
+const initialFilter = compact
+  ? (lang === 'es' ? 'Español' : lang === 'vi' ? 'Vietnamese' : 'English')
+  : 'all'; // full table page always starts unfiltered
+
+const LANG_LABELS: Record<string, string> = { English: 'English', 'Español': 'Español', Vietnamese: 'Tiếng Việt', Tagalog: 'Tagalog' };
+const filters = [{ value: 'all', label: ui.schedule.all }].concat(
+  [...new Set(MASS_ROWS.map((r) => r.lang))].map((l) => ({ value: l, label: LANG_LABELS[l] || l })),
+);
+// Image-swap mode: staff can replace the whole schedule block with an uploaded
+// image for a special week (Decap: Mass schedule → Display). Table page unaffected.
+const display = SCHEDULE_DISPLAY as any;
+const showImage = compact && display.mode === 'image' && display.image?.trim();
+---
+{compact ? (
+  <section aria-label={ui.schedule.massTimes} data-mass-root data-initial={initialFilter}>
+    <h2>{ui.schedule.massTimes}</h2>
+    {showImage ? (
+      <p>
+        {display.link?.trim() ? (
+          <a href={display.link.trim()}><img src={display.image} alt={ui.schedule.massTimes} loading="lazy" style="border-radius:.75rem" /></a>
+        ) : (
+          <img src={display.image} alt={ui.schedule.massTimes} loading="lazy" style="border-radius:.75rem" />
+        )}
+      </p>
+    ) : (
+    <>
+    <div class="mt-2 flex flex-wrap items-center gap-2" role="group" aria-label={ui.schedule.filterBy}>
+      <span class="font-bold text-navy">{ui.schedule.filterBy}</span>
+      {filters.map((f) => (
+        <button type="button" class="filter-btn" data-filter={f.value} aria-pressed={f.value === initialFilter ? 'true' : 'false'}>{f.label}</button>
+      ))}
+    </div>
+    <div class="sched-grid">
+      {dayGroups.map((g) => (
+        <div class="sched" data-mass-group>
+          <h3 class="mt-0">{g.name}</h3>
+          <dl class="my-2">
+            {g.rows.map((r) => (
+              <div data-lang={r.lang}>
+                <dt>{r.time}{r.suffix ? ` ${r.suffix}` : ''}{r.note ? ` — ${r.note}` : ''} <span class={chipClass(r.lang)}>{langName(r.lang)}</span></dt>
+                <dd>{serviceName(r.service, lang)} · {locName(r.location, lang)}{presiderOf(r) ? ` · ${presiderOf(r)}` : ''}</dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+      ))}
+    </div>
+    </>
+    )}
+    <div class="sched">
+      <h3 class="mt-0">{ui.schedule.confession}</h3>
+      <dl class="my-2">
+        <div>
+          <dt>{CONFESSION.day[lang]}</dt>
+          <dd>{CONFESSION.time[lang]}</dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+) : (
+  <section aria-label={ui.schedule.massTimes} data-mass-root data-initial={initialFilter}>
+    <div class="mt-2 flex flex-wrap items-center gap-2" role="group" aria-label={ui.schedule.filterBy}>
+      <span class="font-bold text-navy">{ui.schedule.filterBy}</span>
+      {filters.map((f) => (
+        <button type="button" class="filter-btn" data-filter={f.value} aria-pressed={f.value === initialFilter ? 'true' : 'false'}>{f.label}</button>
+      ))}
+    </div>
+    <p data-mass-count class="text-sm text-soft" aria-live="polite"></p>
+    <div class="table-scroll">
+      <table class="mass">
+        <thead>
+          <tr><th>{ui.tableService}</th><th>{ui.tableTime}</th><th>{ui.tableLang}</th><th>{ui.tablePlace}</th>{showPresiders && <th>{ui.tablePresider}</th>}</tr>
+        </thead>
+        <tbody>
+          {MASS_ROWS.map((r) => (
+            <tr data-lang={r.lang}>
+              <td>{serviceName(r.service, lang)}</td>
+              <td><strong>{dayName(r.day, lang)}{' '}{r.time}{r.suffix ? ` ${r.suffix}` : ''}</strong>{r.note ? <><br /><small class="text-soft">{r.note}</small></> : null}</td>
+              <td><span class={chipClass(r.lang)}>{langName(r.lang)}</span></td>
+              <td>{locName(r.location, lang)}</td>
+              {showPresiders && <td>{presiderOf(r) || ui.tbd}</td>}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+    <h2>{ui.schedule.confession}</h2>
+    <p><strong>{CONFESSION.day[lang]}</strong><br />{CONFESSION.time[lang]}</p>
+  </section>
+)}
+<script>
+(function () {
+  var roots = document.querySelectorAll('[data-mass-root]');
+  for (var k = 0; k < roots.length; k++) {
+    (function (root) {
+      var btns = root.querySelectorAll('[data-filter]');
+      var items = root.querySelectorAll('[data-lang]');
+      var groups = root.querySelectorAll('[data-mass-group]');
+      var count = root.querySelector('[data-mass-count]');
+      if (!btns.length || !items.length) return;
+      function apply(f) {
+        var n = 0;
+        for (var i = 0; i < items.length; i++) {
+          var show = f === 'all' || items[i].getAttribute('data-lang') === f;
+          items[i].style.display = show ? '' : 'none';
+          if (show) n++;
+        }
+        for (var j = 0; j < groups.length; j++) {
+          var anyVisible = false;
+          var kids = groups[j].querySelectorAll('[data-lang]');
+          for (var m = 0; m < kids.length; m++) {
+            if (kids[m].style.display !== 'none') { anyVisible = true; break; }
+          }
+          groups[j].style.display = anyVisible ? '' : 'none';
+        }
+        for (var b = 0; b < btns.length; b++) {
+          btns[b].setAttribute('aria-pressed', String(btns[b].getAttribute('data-filter') === f));
+        }
+        if (count) count.textContent = n + ' / ' + items.length;
+      }
+      for (var c = 0; c < btns.length; c++) {
+        (function (btn) {
+          btn.addEventListener('click', function () { apply(btn.getAttribute('data-filter') || 'all'); });
+        })(btns[c]);
+      }
+      var initial = root.getAttribute('data-initial') || 'all';
+      apply(initial);
+    })(roots[k]);
+  }
+})();
+</script>

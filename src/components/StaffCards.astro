@@ -1,0 +1,27 @@
+---
+import staffData from '../data/staff.json';
+interface Props { lang: string; ui: any; }
+const { lang, ui } = Astro.props;
+const members = (staffData as any).members as Array<{
+  slug: string; name: string; role: string; phone: string; photo: string; bio: string;
+}>;
+const initials = (name: string) =>
+  name.replace(/^(Rev\.|Mrs?\.|Ms\.|Sr\.|Deacon)\s+/i, '').split(/\s+/).map((w) => w[0]).slice(0, 2).join('').toUpperCase();
+---
+<div class="cards staff-grid">
+  {members.map((s) => (
+    <article class="card staff-card">
+      {s.photo ? (
+        <img class="staff-photo" src={s.photo} alt={s.name} width="160" height="160" loading="lazy" />
+      ) : (
+        <span class="staff-initials" aria-hidden="true">{initials(s.name)}</span>
+      )}
+      <h3>{s.name}</h3>
+      <p class="staff-role">{s.role}</p>
+      <p class="my-1"><a href={`tel:${s.phone.replace(/[^0-9]/g, '')}`}>{s.phone}</a></p>
+      <p class="my-1">
+        {s.bio ? <a class="btn btn-outline" href={`/${lang}/staff/${s.slug}/`}>{ui.viewProfile}</a> : <a class="btn btn-outline" href={`/${lang}/contact/`}>{ui.nav.contact}</a>}
+      </p>
+    </article>
+  ))}
+</div>

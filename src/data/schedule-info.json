@@ -1,0 +1,19 @@
+{
+  "confession": {
+    "day": {
+      "en": "Every Saturday",
+      "es": "Todos los sábados",
+      "vi": "Thứ Bảy hàng tuần"
+    },
+    "time": {
+      "en": "3:00 PM – 3:45 PM",
+      "es": "3:00 PM – 3:45 PM",
+      "vi": "3 giờ chiều – 3 giờ 45 chiều"
+    }
+  },
+  "office": {
+    "en": "Tuesday – Friday: 10:00 a.m. – 5:00 p.m.\nSaturday – Monday: CLOSED",
+    "es": "Martes – Viernes: 10:00 a.m. – 5:00 p.m.\nSábado – Lunes: CERRADO",
+    "vi": "Thứ Ba – Thứ Sáu: 10:00 sáng – 5:00 chiều\nThứ Bảy – Thứ Hai: ĐÓNG CỬA"
+  }
+}
