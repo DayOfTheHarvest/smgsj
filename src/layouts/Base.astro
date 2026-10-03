@@ -61,13 +61,30 @@ const showNotice = Boolean(notice.enabled) && noticeText.length > 0;
   </main>
   <Footer lang={lang} ui={ui} />
   <script>
-    // Forward invite/recovery logins to the CMS.
+    // Forward invite/recovery logins to the CMS. Runs both immediately and on
+    // init in case the widget already initialized before this script ran.
     try {
+      var __smgTokenHandled = false;
+      var __smgHandleTokens = function () {
+        if (__smgTokenHandled) return;
+        var h = location.hash || '';
+        if (!window.netlifyIdentity) return;
+        if (/invite_token|confirmation_token/.test(h)) {
+          __smgTokenHandled = true;
+          window.netlifyIdentity.open('signup');
+        } else if (/recovery_token|email_change_token/.test(h)) {
+          __smgTokenHandled = true;
+          window.netlifyIdentity.open('login');
+        }
+      };
       if (window.netlifyIdentity) {
-        window.netlifyIdentity.on('init', (user) => {
-          if (!user) window.netlifyIdentity.on('login', () => { document.location.href = '/admin/'; });
+        window.netlifyIdentity.on('init', function (user) {
+          __smgHandleTokens();
+          if (!user) window.netlifyIdentity.on('login', function () { document.location.href = '/admin/'; });
         });
       }
+      if (document.readyState === 'complete' || document.readyState === 'interactive') __smgHandleTokens();
+      else document.addEventListener('DOMContentLoaded', __smgHandleTokens);
     } catch(e) {}
   </script>
   <script>

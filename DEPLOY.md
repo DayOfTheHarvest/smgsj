@@ -127,6 +127,7 @@ GitHub and the site rebuilds. Roll back by reverting the 3 files.
 | Symptom | Cause → fix |
 |---|---|
 | `/admin` login loops | Git Gateway off or `branch:` ≠ repo default → §3.1–3.2 |
+| Invite link does nothing | Link is old (request a fresh invite), or an ad-blocker ate the login popup — disable it for the site, open the link, complete signup in the modal; you land in `/admin/` |
 | Save in Decap does nothing | Not invited via Identity, or Git Gateway cannot reach GitHub |
 | Flocknote signup opens new tab | Expected — posts to Flocknote group 346213 in a new tab |
 | Old `.html` URL 404s | Missing `_redirects` rule — add `OLD /en/<slug> 301` |

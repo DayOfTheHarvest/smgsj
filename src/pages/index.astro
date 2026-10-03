@@ -14,14 +14,17 @@
 <body>
   <p><a href="/en/">English</a> · <a href="/es/">Español</a> · <a href="/vi/">Tiếng Việt</a></p>
   <script>
+    // Preserve #invite_token / #recovery_token fragments: invite emails land on
+    // /#invite_token=… and the login code on the target page needs the hash.
     try {
+      const h = location.hash || '';
       const m = document.cookie.match(/smg-lang=(en|es|vi)/);
-      if (m) location.replace('/' + m[1] + '/');
+      if (m) location.replace('/' + m[1] + '/' + h);
       else {
         const nav = (navigator.language || 'en').slice(0, 2).toLowerCase();
-        location.replace('/' + (nav === 'es' ? 'es' : nav === 'vi' ? 'vi' : 'en') + '/');
+        location.replace('/' + (nav === 'es' ? 'es' : nav === 'vi' ? 'vi' : 'en') + '/' + h);
       }
-    } catch (e) { location.replace('/en/'); }
+    } catch (e) { location.replace('/en/' + (location.hash || '')); }
   </script>
 </body>
 </html>
