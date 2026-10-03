@@ -1,9 +1,9 @@
 {
-  "enabled": false,
+  "enabled": true,
   "text": {
-    "en": "",
-    "es": "",
-    "vi": ""
+    "en": "test",
+    "es": "test",
+    "vi": "test"
   },
   "link": "",
   "link_label": {
