@@ -167,6 +167,8 @@
   .prose ul, .prose ol { @apply pl-6; }
   .prose li { @apply my-1; }
 
+  /* Diocesan icons: fixed display height beats UA/preflight attribute rules */
+  .diocesan-icon { height: 140px; width: auto; }
   .footer { @apply mt-12 bg-navyDark text-slate-300; }
 
   html, body { overflow-x: clip; }

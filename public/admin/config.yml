@@ -521,6 +521,8 @@ collections:
                   - { label: 'Image (pick from uploads)', name: image, widget: image }
                   - { label: 'Alt text', name: alt, widget: string }
                   - { label: 'Link', name: link, widget: string }
+                  - { label: 'Width in pixels (keeps proportions)', name: width, widget: number }
+                  - { label: 'Height in pixels', name: height, widget: number }
               - label: 'EthicsPoint name'
                 name: ethics_name
                 widget: object
