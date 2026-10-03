@@ -15,11 +15,13 @@ interface Props {
   title: string;
   description?: string;
   fallback?: boolean;
+  /** Full canonical path override (the homepage served at / uses '/'). */
+  canonicalPath?: string;
 }
-const { lang, slug, title, description, fallback = false } = Astro.props;
+const { lang, slug, title, description, fallback = false, canonicalPath } = Astro.props;
 const ui = lang === 'es' ? es : lang === 'vi' ? vi : en;
 const base = import.meta.env.SITE ?? 'https://www.smgsj.org';
-const canonical = `${base}/${lang}${slug && slug !== 'home' ? '/' + slug : ''}`;
+const canonical = `${base}${canonicalPath ?? `/${lang}${slug && slug !== 'home' ? '/' + slug : ''}`}`;
 const notice = noticeData as any;
 const noticeText: string = (notice.text?.[lang] || notice.text?.en || '').trim();
 const noticeLabel: string = (notice.link_label?.[lang] || notice.link_label?.en || '').trim();
@@ -36,7 +38,7 @@ const showNotice = Boolean(notice.enabled) && noticeText.length > 0;
   <link rel="alternate" hreflang="en" href={`${base}/en${slug && slug !== 'home' ? '/' + slug : ''}`} />
   <link rel="alternate" hreflang="es" href={`${base}/es${slug && slug !== 'home' ? '/' + slug : ''}`} />
   <link rel="alternate" hreflang="vi" href={`${base}/vi${slug && slug !== 'home' ? '/' + slug : ''}`} />
-  <link rel="alternate" hreflang="x-default" href={`${base}/en${slug && slug !== 'home' ? '/' + slug : ''}`} />
+  <link rel="alternate" hreflang="x-default" href={`${base}/`} />
   <link rel="icon" href="/favicon.ico" />
   <!-- Netlify Identity: catches invite/recovery tokens site-wide (invite emails
        land on /#invite_token=… with no login code) and forwards to /admin/. -->
@@ -74,17 +76,6 @@ const showNotice = Boolean(notice.enabled) && noticeText.length > 0;
             window.netlifyIdentity.on('login', function () { document.location.href = '/admin/'; });
           }
         });
-      }
-    } catch(e) {}
-  </script>
-  <script>
-    // Remember: cookie stores topbar language choice for next visit to /
-    try {
-      const m = document.cookie.match(/smg-lang=(en|es|vi)/);
-      if (!m && location.pathname === '/') {
-        const nav = (navigator.language || 'en').slice(0,2).toLowerCase();
-        const lang = nav === 'es' ? 'es' : nav === 'vi' ? 'vi' : 'en';
-        location.replace('/' + lang + '/');
       }
     } catch(e) {}
   </script>

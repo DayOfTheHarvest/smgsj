@@ -28,7 +28,7 @@ to keep the repo lean — `MIGRATION.md` records what came from where.
 ## Repo map
 
 ```
-src/pages/index.astro            Root: client-side language redirect (/ → cookie/Accept-Language/en)
+src/pages/index.astro            Root: English homepage served directly (no redirect)
 src/pages/[lang]/index.astro     Homepage (carousel, hero, cards, schedule, events, office, flocknote)
 src/pages/[lang]/[...slug].astro All 41 topics (body + Mass table / staff cards / forms / etc.)
 src/pages/[lang]/staff/[member].astro  13 staff profiles × 3 langs

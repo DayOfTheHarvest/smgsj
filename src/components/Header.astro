@@ -87,13 +87,4 @@ const groups = ((nav.groups as Array<any>) ?? []).map((g) => ({
     if (opening) { nav?.removeAttribute('hidden'); btn?.setAttribute('aria-expanded', 'true'); }
     else { nav?.setAttribute('hidden', ''); btn?.setAttribute('aria-expanded', 'false'); }
   });
-  // Remember language choice for next visit to /
-  document.querySelectorAll('.site-langs a').forEach((a) => {
-    a.addEventListener('click', () => {
-      try {
-        const l = (a.getAttribute('href') || '/en/').split('/')[1];
-        document.cookie = `smg-lang=${l};path=/;max-age=31536000`;
-      } catch(e) {}
-    });
-  });
 </script>

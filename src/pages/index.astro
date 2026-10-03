@@ -1,47 +1,10 @@
 ---
+import HomePage from '../components/HomePage.astro';
+import { getCollection } from 'astro:content';
+
+// Site root serves the English homepage directly — no redirect, no flash.
+// ES/VI visitors use the header switcher (their choice is remembered).
+const pages = await getCollection('pages');
+const home = pages.find((p) => p.slug === 'home');
 ---
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta http-equiv="refresh" content="0;url=/en/" />
-  <link rel="canonical" href="https://www.smgsj.org/en/" />
-  <title>St. Maria Goretti Parish</title>
-  <style>html{visibility:hidden}</style>
-  <noscript><style>html{visibility:visible}</style></noscript>
-  <script is:inline>
-    // Runs before first paint: cookie choice first (remembered language),
-    // then browser language, else English. Preserves login/anchor fragments.
-    try {
-      var h = location.hash || '';
-      var m = document.cookie.match(/smg-lang=(en|es|vi)/);
-      if (m) location.replace('/' + m[1] + '/' + h);
-      else {
-        var nav = (navigator.language || 'en').slice(0, 2).toLowerCase();
-        location.replace('/' + (nav === 'es' ? 'es' : nav === 'vi' ? 'vi' : 'en') + '/' + h);
-      }
-    } catch (e) { document.documentElement.style.visibility = 'visible'; /* fall through to links below (no JS) */ }
-  </script>
-</head>
-<body>
-  <p><a href="/en/">English</a> · <a href="/es/">Español</a> · <a href="/vi/">Tiếng Việt</a></p>
-  <script is:inline src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-  <script>
-    // Same post-init token handling as the main layout: the invite link lands
-    // here first, so the signup modal can open even before the redirect runs.
-    try {
-      if (window.netlifyIdentity) {
-        window.netlifyIdentity.on('init', function (user) {
-          var h = location.hash || '';
-          if (!user) {
-            if (/invite_token|confirmation_token/.test(h)) window.netlifyIdentity.open('signup');
-            else if (/recovery_token|email_change_token/.test(h)) window.netlifyIdentity.open('login');
-            window.netlifyIdentity.on('login', function () { document.location.href = '/admin/'; });
-          }
-        });
-      }
-    } catch (e) {}
-  </script>
-</body>
-</html>
+<HomePage lang="en" homeEntry={home} isRoot={true} />
