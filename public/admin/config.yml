@@ -46,7 +46,7 @@ collections:
         name: title_es
         widget: string
         required: false
-        hint: 'Leave empty to show English + banner. Pastor approves sacramental Spanish.'
+        hint: 'Leave empty to show English + banner.'
       - label: 'Body (Español, optional)'
         name: body_es
         widget: markdown
@@ -57,7 +57,7 @@ collections:
         name: title_vi
         widget: string
         required: false
-        hint: 'Leave empty to show English + banner. Pastor approves sacramental Vietnamese.'
+        hint: 'Leave empty to show English + banner.'
       - label: 'Body (Tiếng Việt, optional)'
         name: body_vi
         widget: markdown
@@ -76,6 +76,7 @@ collections:
           - label: 'Locations'
             name: locations
             widget: list
+            summary: '{{name}}'
             hint: 'Do not add or remove rows without the web developer volunteer — the Mass list matches by the English name.'
             fields:
               - label: 'Place (must match Mass list)'
@@ -104,6 +105,7 @@ collections:
           - label: 'Masses'
             name: masses
             widget: list
+            summary: '{{day}} {{time}} ({{lang}})'
             hint: 'Pick day, language, and place from the lists. Do not add or remove rows without the web developer volunteer.'
             fields:
               - label: 'Service'
@@ -190,6 +192,7 @@ collections:
           - label: 'Members'
             name: members
             widget: list
+            summary: '{{name}}'
             fields:
               - label: 'Page code'
                 name: slug
@@ -219,6 +222,7 @@ collections:
           - label: 'Bulletins (newest first)'
             name: bulletins
             widget: list
+            summary: '{{label}}'
             fields:
               - { label: 'Date', name: date, widget: string }
               - { label: 'Label (e.g. October 11, 2026)', name: label, widget: string }
@@ -234,6 +238,7 @@ collections:
           - label: 'Slides'
             name: slides
             widget: list
+            summary: '{{caption}}'
             fields:
               - { label: 'Banner image', name: image, widget: image }
               - { label: 'Alt text (describe the banner)', name: alt, widget: string }
@@ -299,6 +304,7 @@ collections:
           - label: 'Menu groups'
             name: groups
             widget: list
+            summary: '{{label.en}}'
             fields:
               - { label: 'Group code (leave alone — used behind the scenes)', name: id, widget: string }
               - label: 'Group name'
@@ -312,6 +318,7 @@ collections:
               - label: 'Submenu links'
                 name: children
                 widget: list
+                summary: '{{label.en}}'
                 fields:
                   - label: 'Link name'
                     name: label
@@ -383,6 +390,7 @@ collections:
               - label: 'Hero buttons'
                 name: buttons
                 widget: list
+                summary: '{{label.en}}'
                 hint: 'WARNING: parish links must start AND end with / . A wrong link makes a dead button.'
                 fields:
                   - label: 'Label'
@@ -397,12 +405,13 @@ collections:
                     name: style
                     widget: select
                     options: ['gold', 'light', 'primary', 'outline']
-          - label: "Pastor's welcome quote (needs pastor approval to change)"
+          - label: "Pastor's welcome quote"
             name: pastor_quote
             widget: text
           - label: 'Event cards'
             name: events
             widget: list
+            summary: '{{title.en}}'
             fields:
               - label: 'Icon (pick from the list)'
                 name: icon
@@ -456,6 +465,7 @@ collections:
           - label: 'Custom sections (whole new blocks staff can add)'
             name: custom
             widget: list
+            summary: '{{title.en}}'
             hint: 'Each row is a titled block of cards, placed together at the Custom spot in Page layout order. Add as many blocks as needed.'
             fields:
               - label: 'Block heading'
@@ -468,6 +478,7 @@ collections:
               - label: 'Cards in this block'
                 name: cards
                 widget: list
+                summary: '{{title.en}}'
                 fields:
                   - label: 'Icon (pick from the list)'
                     name: icon
@@ -504,6 +515,7 @@ collections:
               - label: 'Icon links (add, remove, or reorder)'
                 name: icons
                 widget: list
+                summary: '{{alt}}'
                 hint: 'WARNING: use the Media library images already uploaded. Deleting all rows removes the icon row. All icons show at the same height.'
                 fields:
                   - { label: 'Image (pick from uploads)', name: image, widget: image }
@@ -534,6 +546,7 @@ collections:
           - label: 'Fundraisers'
             name: fundraisers
             widget: list
+            summary: '{{title.en}}'
             fields:
               - label: 'Page address (must match the fundraiser page, e.g. campaign)'
                 name: id
@@ -567,6 +580,7 @@ collections:
           - label: 'Cards'
             name: cards
             widget: list
+            summary: '{{title.en}}'
             fields:
               - label: 'Icon (pick from the list — no emoji needed)'
                 name: icon
@@ -649,6 +663,7 @@ collections:
           - label: 'Forms'
             name: forms
             widget: list
+            summary: '{{label}}'
             fields:
               - { label: 'Label (keep all 3 languages in one line)', name: label, widget: string }
               - { label: 'Link', name: url, widget: string, hint: 'A parish page, a full web address, or a @shortcut word (@giving @payment @calendar-suggest @calendar-view @flocknote @youtube).' }
@@ -660,6 +675,7 @@ collections:
           - label: 'Galleries'
             name: galleries
             widget: list
+            summary: '{{title}}'
             fields:
               - { label: 'Title', name: title, widget: string }
               - { label: 'Photo count', name: photos, widget: number }

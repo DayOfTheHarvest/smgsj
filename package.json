@@ -10,7 +10,8 @@
     "pagefind": "npx --yes pagefind --site dist 2>&1 | tail -n 5 || echo 'pagefind skipped (offline?)'",
     "preview": "astro preview --host",
     "migrate": "python3 scripts/migrate.py",
-    "auth:check": "python3 scripts/check-auth.py"
+    "auth:check": "python3 scripts/check-auth.py",
+    "content:check": "python3 scripts/check-slugs.py"
   },
   "dependencies": {
     "astro": "^4.16.0",

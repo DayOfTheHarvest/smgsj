@@ -326,9 +326,7 @@
           "href": "@payment"
         }
       ]
-    }
-  ],
-  "quick_links": [
+    },
     {
       "id": "mass-times",
       "label": {
@@ -336,7 +334,8 @@
         "es": "Horario de Misas",
         "vi": "Giờ Lễ"
       },
-      "href": "/mass-times/"
+      "href": "/mass-times/",
+      "children": []
     },
     {
       "id": "contact",
@@ -345,7 +344,8 @@
         "es": "Contacto",
         "vi": "Liên Lạc"
       },
-      "href": "/contact/"
+      "href": "/contact/",
+      "children": []
     }
   ]
 }

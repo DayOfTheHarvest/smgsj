@@ -51,7 +51,7 @@ every page of the site.
 
 | What you want to change | Where to go in the editing screen |
 |---|---|
-| Page text (41 topics, English/Spanish/Vietnamese) | Pages → pick the topic. English is required; if Spanish or Vietnamese is empty, visitors see the English with a small note (never a broken page). **New page:** Pages → New Page → set its address once (lowercase-with-dashes), write the English, save — it appears in all 3 languages at once. Then link it from another page. |
+| Page text (41 topics, English/Spanish/Vietnamese) | Pages → pick the topic. English is required; if Spanish or Vietnamese is empty, visitors see the English with a small note (never a broken page). **New page:** Pages → New Page → set its address once (lowercase-with-dashes), write the English, save — it appears in all 3 languages at once. Then link it from another page. The website itself checks for duplicate addresses — if you made one, the web developer volunteer will see an error and help fix it. |
 | Mass times, places, notes | Mass schedule → Mass times, places & presiders. Day, language, and place are picked from lists. Each row also holds that Mass's presider name, so nothing can silently mismatch. |
 | Confession wording | Mass schedule → Confession text. Shows beside the Mass schedule. |
 | Office hours wording | Parish info → Office hours. Hours update everywhere at once (homepage Contact section, bottom of every page, contact page). |
@@ -59,7 +59,7 @@ every page of the site.
 | Homepage moving pictures | Homepage carousel. The first picture shows on load; each picture has its own seconds and size (leave sizes at 1920×480 unless the web developer volunteer says otherwise). Upload wide pictures (about 1920 wide) under Media first. |
 | Homepage boxes (Bulletin, Giving, Payment, Requests) | Site settings → Homepage action cards. Kinds: bulletin list (only ONE box), link button, text only. Web addresses for parish pages must start AND end with `/`. You can also type a @shortcut word (@giving, @payment, @calendar-suggest, @calendar-view, @flocknote, @youtube) instead of an address — those follow Site settings automatically. |
 | Homepage order | Site settings → Homepage welcome → Page layout. Drag sections to reorder; add a section under Hidden to remove it without deleting it. |
-| Welcome text, buttons, events, facility line, church icons | Site settings → Homepage welcome (welcome / events / facility / church blocks). The pastor's words need the pastor's OK first. |
+| Welcome text, buttons, events, facility line, church icons | Site settings → Homepage welcome (welcome / events / facility / church blocks). The pastor's words should stay as he wrote them. |
 | Top menu | Site settings → Header menu structure. Links must start AND end with `/`. Add a temporary entry (for example a fundraiser) and remove it when done. |
 | Phone, email, address, Giving/Payment, Calendar, YouTube, social media | Site settings → Contact info & external links. A wrong address here shows on every page — double-check. |
 | Request forms, photo albums | Notices, forms & galleries. Update form addresses when yearly sign-ups roll over; paste Google Photos album addresses as albums move over. |
