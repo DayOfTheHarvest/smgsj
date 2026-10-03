@@ -5,6 +5,7 @@
 import type { Lang } from '../config';
 import massesData from './masses.json';
 import scheduleInfo from './schedule-info.json';
+import officeData from './office.json';
 
 import locationsData from './locations.json';
 
@@ -82,4 +83,4 @@ export const SCHEDULE_DISPLAY: { mode?: string; image?: string; link?: string } 
 export const CONFESSION: { day: Record<string, string>; time: Record<string, string> } = (
   scheduleInfo as any
 ).confession;
-export const OFFICE_HOURS: Record<string, string> = (scheduleInfo as any).office;
+export const OFFICE_HOURS: Record<string, string> = (officeData as any) as Record<string, string>;

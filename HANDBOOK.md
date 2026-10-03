@@ -53,7 +53,8 @@ every page of the site.
 |---|---|
 | Page text (41 topics, English/Spanish/Vietnamese) | Pages → pick the topic. English is required; if Spanish or Vietnamese is empty, visitors see the English with a small note (never a broken page). **New page:** Pages → New Page → set its address once (lowercase-with-dashes), write the English, save — it appears in all 3 languages at once. Then link it from another page. |
 | Mass times, places, notes | Mass schedule → Mass times, places & presiders. Day, language, and place are picked from lists. Each row also holds that Mass's presider name, so nothing can silently mismatch. |
-| Confession / office hours wording | Mass schedule → Confession & office hours text. Hours update everywhere at once (homepage, bottom of every page, contact page). |
+| Confession wording | Mass schedule → Confession text. Shows beside the Mass schedule. |
+| Office hours wording | Parish info → Office hours. Hours update everywhere at once (homepage Contact section, bottom of every page, contact page). |
 | Staff names, job titles, phone numbers, biographies | Staff directory. Photos: press Choose image, never type an address. Empty biography = no personal page. |
 | Homepage moving pictures | Homepage carousel. The first picture shows on load; each picture has its own seconds and size (leave sizes at 1920×480 unless the web developer volunteer says otherwise). Upload wide pictures (about 1920 wide) under Media first. |
 | Homepage boxes (Bulletin, Giving, Payment, Requests) | Site settings → Homepage action cards. Kinds: bulletin list (only ONE box), link button, text only. Web addresses for parish pages must start AND end with `/`. You can also type a @shortcut word (@giving, @payment, @calendar-suggest, @calendar-view, @flocknote, @youtube) instead of an address — those follow Site settings automatically. |

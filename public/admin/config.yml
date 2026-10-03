@@ -149,7 +149,7 @@ collections:
                 widget: string
                 required: false
       - name: schedule-info
-        label: Confession & office hours text
+        label: Confession text
         file: src/data/schedule-info.json
         fields:
           - label: 'Confession'
@@ -170,14 +170,24 @@ collections:
                   - { label: 'English (e.g. 3:00 PM – 3:45 PM)', name: en, widget: string }
                   - { label: 'Español', name: es, widget: string }
                   - { label: 'Tiếng Việt', name: vi, widget: string }
-          - label: 'Office hours'
-            name: office
-            widget: object
-            hint: 'Write two lines per language. Line 1: open days and times. Line 2: closed days. Example line: Tuesday – Friday: 10:00 a.m. – 5:00 p.m.'
-            fields:
-              - { label: 'English', name: en, widget: text }
-              - { label: 'Español', name: es, widget: text }
-              - { label: 'Tiếng Việt', name: vi, widget: text }
+  - name: parish
+    label: Parish info
+    files:
+      - name: office-hours
+        label: Office hours (homepage, footer, contact)
+        file: src/data/office.json
+        description: One place — updates the homepage Contact section, the footer on every page, and the contact page automatically.
+        fields:
+          - label: 'Office hours (two lines per language: open days first, closed days second)'
+            name: en
+            widget: text
+            hint: 'Example: Tuesday – Friday: 10:00 a.m. – 5:00 p.m.'
+          - label: 'Horario de oficina (dos líneas: días abierto, días cerrado)'
+            name: es
+            widget: text
+          - label: 'Giờ văn phòng (hai dòng: ngày mở cửa, ngày đóng cửa)'
+            name: vi
+            widget: text
   - name: directory
     label: Staff directory
     files:
