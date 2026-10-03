@@ -55,8 +55,8 @@ every page of the site.
 | Mass times, places, notes | Mass schedule → Mass times, places & presiders. Day, language, and place are picked from lists. Each row also holds that Mass's presider name, so nothing can silently mismatch. |
 | Confession / office hours wording | Mass schedule → Confession & office hours text. Hours update everywhere at once (homepage, bottom of every page, contact page). |
 | Staff names, job titles, phone numbers, biographies | Staff directory. Photos: press Choose image, never type an address. Empty biography = no personal page. |
-| Homepage moving pictures | Homepage carousel. The first picture shows on load; each picture has its own seconds. Upload wide pictures (about 1920 wide) under Media first. |
-| Homepage boxes (Bulletin, Giving, Payment, Requests) | Site settings → Homepage action cards. Kinds: bulletin list (only ONE box), link button, text only. Web addresses for parish pages must start AND end with `/`. |
+| Homepage moving pictures | Homepage carousel. The first picture shows on load; each picture has its own seconds and size (leave sizes at 1920×480 unless the web developer volunteer says otherwise). Upload wide pictures (about 1920 wide) under Media first. |
+| Homepage boxes (Bulletin, Giving, Payment, Requests) | Site settings → Homepage action cards. Kinds: bulletin list (only ONE box), link button, text only. Web addresses for parish pages must start AND end with `/`. You can also type a @shortcut word (@giving, @payment, @calendar-suggest, @calendar-view, @flocknote, @youtube) instead of an address — those follow Site settings automatically. |
 | Homepage order | Site settings → Homepage welcome → Page layout. Drag sections to reorder; add a section under Hidden to remove it without deleting it. |
 | Welcome text, buttons, events, facility line, church icons | Site settings → Homepage welcome (welcome / events / facility / church blocks). The pastor's words need the pastor's OK first. |
 | Top menu | Site settings → Header menu structure. Links must start AND end with `/`. Add a temporary entry (for example a fundraiser) and remove it when done. |

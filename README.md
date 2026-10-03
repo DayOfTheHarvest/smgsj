@@ -2,13 +2,13 @@
 
 Static trilingual (EN/ES/VI) parish website for St. Maria Goretti Parish,
 2980 Senter Road, San Jose CA 95111. Replaces the LPi/WeConnect site with a
-fast, staff-editable static site. Content migrated from `crawl/` (90 live
-pages fetched 2026-10-02) and `old_old_smgsj/` (August 2026 snapshot).
+fast, staff-editable static site. Content was migrated from a 90-page live
+crawl (2026-10-02) plus an August 2026 snapshot; both were removed afterward
+to keep the repo lean — `MIGRATION.md` records what came from where.
 
 - **Staff editing guide:** `HANDBOOK.md`
 - **Deploy instructions:** `DEPLOY.md`
 - **If the web developer volunteer leaves:** `SUCCESSION.md`
-- **Content audit + open questions for the office:** `AUDIT.md`
 - **Old → new page map, gaps, infrastructure notes:** `MIGRATION.md`
 
 ## Tech stack (locked)
@@ -47,8 +47,6 @@ public/admin/                    Decap CMS (config.yml + index.html)
 public/_redirects                74 legacy redirects: old `.html` → `/en/<slug>` (+ staff/photo/contact IDs, news)
 scripts/migrate.py               Old-site → Markdown migration (one-off, rerunnable)
 scripts/sitemap.py               Post-build sitemap.xml with hreflang alternates
-crawl/                           Fresh 2026-10-02 live crawl (90 pages, images, PDFs)
-AUDIT.md                         Coverage proof + open data questions for the office
 ```
 
 ## Content model (the 30-second version)

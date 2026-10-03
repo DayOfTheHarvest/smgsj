@@ -32,7 +32,7 @@ Also: `smgsj@smgsj.org` (parish mail) and `webaccount@smgsj.org` (domain/hosting
 - Skills: basic HTML/Markdown, `git`, and `npm` (all documented in
   `README.md` / `DEPLOY.md`). No framework expertise required for routine work.
 - First week: log in at `/admin`, do the sandbox drills in `HANDBOOK.md`,
-  run `npm run build` locally, read `AUDIT.md` open questions.
+  run `npm run build` locally, read the open office questions in `MIGRATION.md §3`.
 - Standing routine: bulletins + presiders weekly (office staff, no volunteer
   needed); dependency refresh (`npm update`, rebuild) quarterly.
 

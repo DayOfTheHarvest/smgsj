@@ -1,6 +1,7 @@
 # Old site → new site: page map, changes, gaps, infrastructure notes
 
-Source: `crawl/` (90 live pages, 2026-10-02) vs this site (`dist/`, 41 topics ×
+Sources (since removed to keep the repo lean): a 90-page live crawl (2026-10-02)
+plus an August 2026 snapshot, compared against this site (`dist/`, 41 topics ×
 3 languages + 39 staff profiles). Every old URL resolves somewhere; this file
 says where, what changed, and what still depends on the old world.
 
@@ -30,7 +31,7 @@ intentionally retired; **301** = redirect rule in `public/_redirects`.
 | `/chu-n-b--b--t-ch-r-a-t-i` | `/en/baptism-prep/` 301 | **migrated VI** | Same → genuine `body_vi` |
 | `/confirmation` | `/en/confirmation/` 301 | same | 2-year process text intact |
 | `/holy-communion` | `/en/eucharist/` 301 | same | |
-| `/reconciliation` | `/en/reconciliation/` 301 | same | Kept conflicting confession times verbatim — open item in AUDIT.md |
+| `/reconciliation` | `/en/reconciliation/` 301 | same | Kept conflicting confession times verbatim — open item in §3 below |
 | `/anointing-the-sick` | `/en/anointing/` 301 | same | 2311/2310 numbers intact |
 | `/marriage-matrimonial-h-n-ph-i` | `/en/marriage/` 301 | same | Fixed broken USCCB excerpt markup; wedding PDFs localized to `/uploads/docs/` |
 | `/preparaci-n-matrimonial` | `/en/marriage-prep/` 301 | **migrated ES** | Old page itself is an UNDER CONSTRUCTION stub — carried over verbatim, needs office copy |
@@ -69,7 +70,7 @@ intentionally retired; **301** = redirect rule in `public/_redirects`.
 - Past bulletins audience: 3-week window; old bulletins age out automatically.
 - News (Vatican feed) retired; Events section replaces it.
 
-## 3. Still needs fixing / office decisions (also in `AUDIT.md`)
+## 3. Still needs fixing / office decisions
 
 1. Reconciliation times conflict (3:30 / 6:30 / 5:00 PM vs 3–4 PM) — kept verbatim, needs sign-off.
 2. Mon–Fri 6:00pm Vietnamese Mass in graphics, absent from 22-row table — needs sign-off.
@@ -82,7 +83,7 @@ intentionally retired; **301** = redirect rule in `public/_redirects`.
 | Old dependency | Fate on new site |
 |---|---|
 | LPi WeConnect CMS/templates/inline styles | Gone (this repo) |
-| `uploads.weconnect.com` hotlinks (81 files) | 73 vendored to `/uploads/docs/`; 4 rotating bulletins stay hotlinked by design (§3.5); images/icons/banners localized |
+| `uploads.weconnect.com` hotlinks (81 files) | 73 vendored to `/uploads/docs/`; 4 rotating bulletins stay hotlinked by design (see §3 item 5); images/icons/banners localized |
 | CalendarWiz iframes (month + day views) | Live again via exact original embed URLs, staff-editable |
 | LPi contact POST + per-person routing + CSRF | Retired (needs a server); replaced by call/email/staff cards + single inbox |
 | LPi inline registration form | Retired; office-process page (see §3.4) |
@@ -91,9 +92,9 @@ intentionally retired; **301** = redirect rule in `public/_redirects`.
 | Google Scripts/Forms links (baptism, catechetical, marriage-prep) | Kept as external links (forms list, Decap-managed) |
 | Google Maps API-key static image | Replaced by keyless map embed + links |
 | Google Translate widget | Replaced by native trilingual pages + switcher |
-| Google Tag Manager + `UA-135786317-1` analytics | Removed; Cloudflare-beacon placeholder pending a stats decision |
+| Google Tag Manager + `UA-135786317-1` analytics | Removed; undecided snippet placeholder pending a stats decision (see DEPLOY.md §5) |
 | Facebook sharer/sharelinks | Dropped; footer + contact social icons instead |
 | LPi site search (`/search/results`) | Replaced by Pagefind + `/search` |
 | `/diaconate` (404 on old site too) | Points to Formation; needs office URL if a page exists |
-| Vatican/USCCB/DSJ icon links | Kept (footer icons + homepage block, verified live) |
+| Vatican/USCCB/DSJ icon links | Kept (homepage diocesan block, verified live) |
 | EthicsPoint `/manage/design/...` (broken relative URL) | Replaced with verified `opcva.ethicspoint.com` + hotline |
