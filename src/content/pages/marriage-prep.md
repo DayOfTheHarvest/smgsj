@@ -4,7 +4,7 @@ title_en: "Marriage Preparation"
 title_es: "Preparación Matrimonial"
 title_vi: "Chuẩn Bị Hôn Phối"
 body_es: |-
-  **UNDER CONSTRUCTION **
+  **UNDER CONSTRUCTION**
   
 body_vi: |-
   Những anh chị nào muốn làm lễ Hôn Phối cần phải có những giấy chứng nhận dưới đây. 
@@ -17,7 +17,7 @@ body_vi: |-
   
   **NHỮNG ĐIỀU CẦN CHUẨN BỊ TRƯỚC NGÀY CƯỚI**
   
-  - ** Giấy Tờ Cần Thiết**: Chứng Chỉ Rửa Tội, Rước Lễ Lần Đầu và Thêm Sức; Những Chứng Chỉ Để Sửa Soạn Cho Hôn Nhân, và giấy Kết Hôn Dân Sự. Xin xem dưới đây để biết thêm chi tiết. 
+  - **Giấy Tờ Cần Thiết**: Chứng Chỉ Rửa Tội, Rước Lễ Lần Đầu và Thêm Sức; Những Chứng Chỉ Để Sửa Soạn Cho Hôn Nhân, và giấy Kết Hôn Dân Sự. Xin xem dưới đây để biết thêm chi tiết. 
   - **Ngày Hẹn Lần Đầu Với Linh Mục**: Ngày và giờ của lễ cưới sẽ được định trong buổi họp này và anh chị cần điền 2 đơn “A”. Anh chị sẽ nhận được những tài liệu và chi tiết giúp anh chị chuẩn bị cho lễ cưới.
   - **Đặt chỗ cho Lễ Cưới**: Sau khi hẹn với Linh Mục, anh chị sẽ sắp xếp ngày giờ để cử hành Thánh Lễ Hôn Phối của mình tại nhà thờ. Xin liên lạc với văn phòng giáo xứ để đặt nhà thờ.
   - **Ngày Hẹn Lần Hai Với Linh Mục**: Sau khi hoàn tất những giấy tờ cần thiết, cô dâu và chú rể cần lấy hẹn tiếp theo với linh mục, để hoàn tất mọi giấy tờ cho ngày cưới và đơn “B”, và câu hỏi cho người làm chứng. Người làm chứng có thể là cha hoặc mẹ của cô dâu và chú rể, hoặc những người liên hệ với cô dâu và chú rể.
@@ -31,7 +31,7 @@ body_vi: |-
   
   **II. Những Chứng Chỉ Để Sửa Soạn Cho Hôn Nhân**
   
-  **1. Lớp dự bị Hôn Nhân **
+  **1. Lớp dự bị Hôn Nhân**
   
   Giáo xứ Thánh Maria Goretti có tổ chức lớp dự bị hôn nhân. Lớp này có giới hạn chỗ, xin anh chị theo dõi tờ thông tin của giáo xứ để biết thêm chi tiết và ngày để ghi danh. Những anh chị nào muốn lãnh nhận bí tích hôn phối cần phải học lớp này. Lệ phí này sẽ không được hoàn trả lại. Xin ghi danh lớp học tại đây.
   
@@ -59,19 +59,19 @@ body_vi: |-
   
   **LUẬT LỆ CỦA GIÁO XỨ**
   
-  ** Trang Trí**: Cần tháo xuống sau thánh lễ.
+  **Trang Trí**: Cần tháo xuống sau thánh lễ.
   
-  ** Nơ trên hàng ghế**: Nên cột hoặc treo trên ghế, không được dùng ghim hoặc keo dán.
+  **Nơ trên hàng ghế**: Nên cột hoặc treo trên ghế, không được dùng ghim hoặc keo dán.
   
-  ** Hoa**: Cô dâu và chú rể có thể trang trí thêm hoa trong buổi lễ của mình. Vui lòng không di dời những hoa trang trí của nhà thờ. Sau lễ, cô dâu chú rể có thể dâng hoa lại cho nhà thờ.
+  **Hoa**: Cô dâu và chú rể có thể trang trí thêm hoa trong buổi lễ của mình. Vui lòng không di dời những hoa trang trí của nhà thờ. Sau lễ, cô dâu chú rể có thể dâng hoa lại cho nhà thờ.
   
-  ** Chụp Hình**: Trong thánh lễ xin hạn chế dùng đèn flash, cô dâu và chú rể sẽ có 20 phút sau thánh lễ để chụp hình trong nhà thờ.
+  **Chụp Hình**: Trong thánh lễ xin hạn chế dùng đèn flash, cô dâu và chú rể sẽ có 20 phút sau thánh lễ để chụp hình trong nhà thờ.
   
-  ** Quay Phim**: Những người quay phim phải đứng nơi được chỉ định, không được di chuyển trong thánh lễ và xin hạn chế dùng đèn flash.
+  **Quay Phim**: Những người quay phim phải đứng nơi được chỉ định, không được di chuyển trong thánh lễ và xin hạn chế dùng đèn flash.
   
-  ** Gạo và cánh hoa**: Không được rắc (thảy) gạo hoặc cánh hoa trong và ngoài nhà thờ để tránh trượt ngã.
+  **Gạo và cánh hoa**: Không được rắc (thảy) gạo hoặc cánh hoa trong và ngoài nhà thờ để tránh trượt ngã.
   
-  ** Hút Thuốc**: Không được hút thuốc ở trong nhà nhờ và khuôn viên nhà thờ.
+  **Hút Thuốc**: Không được hút thuốc ở trong nhà nhờ và khuôn viên nhà thờ.
   
   **THÔNG TIN THÊM**
   
