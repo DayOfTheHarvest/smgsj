@@ -88,7 +88,8 @@ error you do not understand, stop and tell — do not guess.
    changed time or code word.
 3. Fix the typo and save again.
 4. Still broken → call the web developer volunteer. Tell them the page address and what
-   you changed.
+   you changed. If your change simply does not show up after 5 minutes, say that —
+   the site keeps showing the last good version, so visitors never see a broken page.
 
 ## Undo / earlier versions (how it works)
 *Things can be undone, but there's effort to undo them, so make sure your changes are correct.*

@@ -51,6 +51,10 @@ keep them in sync or logins break.)
 4. **Redirects:** `public/_redirects` (74 rules: legacy `.html` → `/en/<slug>`,
    staff/photo/contact IDs, `/news*`) ships verbatim to `dist/_redirects`.
    Test one after go-live: `/mass-times.html` → `/en/mass-times/`.
+5. **Build failure emails:** Site settings → Build notifications → add the
+   office + volunteer emails for failed deploys. A failed build never takes
+   the site down (Netlify keeps serving the last good deploy) — the email
+   just tells the volunteer a staff save needs attention.
 
 ## 4. Custom domain + DNS + SSL
 

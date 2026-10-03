@@ -7,7 +7,7 @@ const tel = PHONE.replace(/[^0-9]/g, '');
 const langPath = slug && slug !== 'home' ? '/' + slug + '/' : '/';
 const nav = navData as any;
 const hrefFor = (href: string) => resolveLink(href, lang);
-const groups = (nav.groups as Array<any>).map((g) => ({
+const groups = ((nav.groups as Array<any>) ?? []).map((g) => ({
   label: g.label[lang] || g.label.en,
   href: hrefFor(g.href),
   children: ((g.children as Array<any>) ?? []).map((c) => ({

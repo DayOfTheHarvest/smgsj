@@ -2,9 +2,9 @@
 import staffData from '../data/staff.json';
 interface Props { lang: string; ui: any; }
 const { lang, ui } = Astro.props;
-const members = (staffData as any).members as Array<{
+const members = ((staffData as any).members as Array<{
   slug: string; name: string; role: string; phone: string; photo: string; bio: string;
-}>;
+}>) ?? [];
 const initials = (name: string) =>
   name.replace(/^(Rev\.|Mrs?\.|Ms\.|Sr\.|Deacon)\s+/i, '').split(/\s+/).map((w) => w[0]).slice(0, 2).join('').toUpperCase();
 ---

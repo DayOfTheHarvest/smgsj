@@ -129,7 +129,7 @@ for (const id of DEFAULT_ORDER) {
         <section class="mb-2 mt-10 text-center" aria-label="Catholic links">
           <div class="flex flex-wrap items-end justify-center gap-10 md:gap-16">
             {icons.map((ic) => (
-              <a href={ic.link}><img src={ic.image} alt={ic.alt} height="140" loading="lazy" style="width:auto" /></a>
+              <a href={ic.link}><img src={ic.image} alt={ic.alt} loading="lazy" style="height:140px;width:auto" /></a>
             ))}
           </div>
           <p class="mx-auto mt-4 text-sm text-soft">{t(catholic.ethics_name)}: <a href={`tel:${EXTERNAL.ethicspoint_phone.replace(/[^0-9]/g, '')}`} class="font-bold">{EXTERNAL.ethicspoint_phone}</a> · <a href={EXTERNAL.ethicspoint}>{t(catholic.ethics_report)}</a></p>
