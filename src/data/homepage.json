@@ -128,23 +128,17 @@
       {
         "image": "/uploads/icon-usccb.png",
         "alt": "United States Conference of Catholic Bishops",
-        "link": "https://www.usccb.org",
-        "width": 140,
-        "height": 140
+        "link": "https://www.usccb.org"
       },
       {
         "image": "/uploads/icon-dsj.png",
         "alt": "Diocese of San José",
-        "link": "https://www.dsj.org/about-us/",
-        "width": 116,
-        "height": 140
+        "link": "https://www.dsj.org/about-us/"
       },
       {
         "image": "/uploads/icon-vatican.png",
         "alt": "The Holy See",
-        "link": "https://w2.vatican.va/content/vatican/en.html",
-        "width": 109,
-        "height": 140
+        "link": "https://w2.vatican.va/content/vatican/en.html"
       }
     ]
   },

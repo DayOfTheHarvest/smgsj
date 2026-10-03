@@ -64,11 +64,6 @@ collections:
         required: false
         hint: 'Leave empty to show English + banner.'
         buttons: [bold, italic, bulleted-list, numbered-list, link]
-      - label: 'Last updated'
-        name: updated
-        widget: datetime
-        required: false
-        hint: 'Auto-touch on save.'
   - name: schedule
     label: Mass schedule & presiders (weekly)
     description: 'Each Mass row carries its own presider name, so nothing can silently mismatch.'
@@ -106,10 +101,6 @@ collections:
                 options: ['schedule', 'image']
               - { label: 'Picture (Media library)', name: image, widget: image, required: false }
               - { label: 'Picture link (optional)', name: link, widget: string, required: false }
-          - label: 'Week of (Sunday date — which week these presiders cover)'
-            name: week_of
-            widget: string
-            hint: 'Update this every week alongside the presider names.'
           - label: 'Masses'
             name: masses
             widget: list
@@ -200,7 +191,10 @@ collections:
             name: members
             widget: list
             fields:
-              - { label: 'Page code (leave alone — used behind the scenes)', name: slug, widget: string }
+              - label: 'Page code'
+                name: slug
+                widget: string
+                hint: 'For a NEW person, type lowercase-with-dashes (e.g. maria-santos). Never change an existing code — profile links would break.'
               - { label: 'Name', name: name, widget: string }
               - { label: 'Role', name: role, widget: string }
               - { label: 'Phone', name: phone, widget: string }
@@ -510,13 +504,11 @@ collections:
               - label: 'Icon links (add, remove, or reorder)'
                 name: icons
                 widget: list
-                hint: 'WARNING: use the Media library images already uploaded. Deleting all rows removes the icon row.'
+                hint: 'WARNING: use the Media library images already uploaded. Deleting all rows removes the icon row. All icons show at the same height.'
                 fields:
                   - { label: 'Image (pick from uploads)', name: image, widget: image }
                   - { label: 'Alt text', name: alt, widget: string }
                   - { label: 'Link', name: link, widget: string }
-                  - { label: 'Width (px)', name: width, widget: number }
-                  - { label: 'Height (px)', name: height, widget: number }
               - label: 'EthicsPoint name'
                 name: ethics_name
                 widget: object
@@ -680,32 +672,12 @@ collections:
         file: src/data/ui.en.json
         description: 'WARNING: wording only — never rename, remove, or add rows, or buttons and headings across the site go blank. A missing translation shows English automatically.'
         fields:
-        - label: 'Actions'
-          name: actions
-          widget: object
-          fields:
-            - { label: 'Bulletin card title', name: bulletin, widget: string }
-            - { label: 'Giving card title', name: giving, widget: string }
-            - { label: 'Request-forms card title', name: requests, widget: string }
-        - { label: 'Calendar closing sentence', name: calendarTail, widget: string }
         - { label: 'Get-in-touch card title', name: contactCard, widget: string }
-        - label: 'Contact form'
-          name: contactForm
-          widget: object
-          fields:
-            - { label: 'Form: email field', name: email, widget: string }
-            - { label: 'Form: message field', name: message, widget: string }
-            - { label: 'Form: name field', name: name, widget: string }
-            - { label: 'Form: thank-you message', name: ok, widget: string }
-            - { label: 'Form: send button', name: send, widget: string }
-            - { label: 'Form: heading', name: title, widget: string }
         - { label: 'Contact section heading', name: contactSection, widget: string }
         - { label: 'Saturday (day group)', name: daySaturday, widget: string }
         - { label: 'Sunday (day group)', name: daySunday, widget: string }
         - { label: 'Weekdays (day group)', name: dayWeekday, widget: string }
         - { label: 'Email address field', name: emailAddress, widget: string }
-        - { label: 'EthicsPoint line', name: ethicsName, widget: string }
-        - { label: '“Report online” link', name: ethicsReport, widget: string }
         - { label: 'Events heading', name: eventsTitle, widget: string }
         - { label: 'Facility request link text', name: facilityRequest, widget: string }
         - { label: 'Untranslated-page notice', name: fallbackBanner, widget: text }
@@ -722,7 +694,6 @@ collections:
             - { label: 'Footer: parish name', name: parish, widget: string }
             - { label: 'Footer: phone heading', name: phone, widget: string }
         - { label: 'Full-calendar button', name: fullCalendar, widget: string }
-        - { label: 'Giving card text', name: givingBlurb, widget: string }
         - { label: 'Word for “goal”', name: goalWord, widget: string }
         - label: 'Hero'
           name: hero
@@ -738,15 +709,10 @@ collections:
           name: nav
           widget: object
           fields:
-            - { label: 'Menu: About', name: about, widget: string }
             - { label: 'Menu: Call button', name: call, widget: string }
             - { label: 'Menu: Contact', name: contact, widget: string }
-            - { label: 'Menu: Faith Formation', name: formation, widget: string }
             - { label: 'Menu: Giving button', name: giving, widget: string }
-            - { label: 'Menu: Mass Times', name: massTimes, widget: string }
-            - { label: 'Menu: Join Us', name: ministry, widget: string }
             - { label: 'Menu: Request Forms', name: requests, widget: string }
-            - { label: 'Menu: Sacraments', name: sacraments, widget: string }
         - { label: '“Next” arrow label', name: nextSlide, widget: string }
         - { label: 'English-home link (404 page)', name: notFoundEn, widget: string }
         - { label: 'Spanish-home link (404 page)', name: notFoundEs, widget: string }
@@ -755,13 +721,8 @@ collections:
         - { label: 'Word for “of” (in 41% of goal)', name: ofWord, widget: string }
         - { label: '“Phone” label', name: phoneLabel, widget: string }
         - { label: 'Footer Photos link', name: photosLink, widget: string }
-        - { label: 'Picnic card text (old)', name: picnicText, widget: string }
-        - { label: 'Picnic card title (old)', name: picnicTitle, widget: string }
         - { label: '“Raised as of” label', name: pledgedAsOf, widget: string }
-        - { label: 'Prayer card text (old)', name: prayerText, widget: string }
-        - { label: 'Prayer card title (old)', name: prayerTitle, widget: string }
         - { label: '“Previous” arrow label', name: prevSlide, widget: string }
-        - { label: 'Requests card text', name: requestsBlurb, widget: string }
         - label: 'Schedule'
           name: schedule
           widget: object
@@ -771,7 +732,6 @@ collections:
             - { label: 'Filter label', name: filterBy, widget: string }
             - { label: 'Mass schedule heading', name: massTimes, widget: string }
             - { label: 'Office hours heading', name: office, widget: string }
-            - { label: 'Presiders heading', name: presiders, widget: string }
             - { label: '“See full schedule” button', name: seeAll, widget: string }
             - { label: '“Stream Mass” button', name: stream, widget: string }
         - label: 'Search'
@@ -779,7 +739,6 @@ collections:
           widget: object
           fields:
             - { label: 'Search heading', name: label, widget: string }
-            - { label: 'Search box hint text', name: placeholder, widget: string }
         - { label: 'Search loading message', name: searchBuilding, widget: string }
         - { label: 'Slide button label (blind visitors)', name: showSlide, widget: string }
         - { label: '“Sign me up” button', name: signUp, widget: string }
@@ -796,8 +755,6 @@ collections:
         - { label: 'Table column: Day/Time', name: tableTime, widget: string }
         - { label: '“To be decided” label', name: tbd, widget: string }
         - { label: '“Today’s events” button', name: todayEvents, widget: string }
-        - { label: 'Ushers card text (old)', name: ushersText, widget: string }
-        - { label: 'Ushers card title (old)', name: ushersTitle, widget: string }
         - { label: '“View calendar” link', name: viewFacilities, widget: string }
         - { label: '“View profile” link', name: viewProfile, widget: string }
         - { label: 'Visit title', name: visitTitle, widget: string }
@@ -806,32 +763,12 @@ collections:
         file: src/data/ui.es.json
         description: 'WARNING: wording only — never rename, remove, or add rows, or buttons and headings across the site go blank. A missing translation shows English automatically.'
         fields:
-        - label: 'Actions'
-          name: actions
-          widget: object
-          fields:
-            - { label: 'Bulletin card title', name: bulletin, widget: string }
-            - { label: 'Giving card title', name: giving, widget: string }
-            - { label: 'Request-forms card title', name: requests, widget: string }
-        - { label: 'Calendar closing sentence', name: calendarTail, widget: string }
         - { label: 'Get-in-touch card title', name: contactCard, widget: string }
-        - label: 'Contact form'
-          name: contactForm
-          widget: object
-          fields:
-            - { label: 'Form: email field', name: email, widget: string }
-            - { label: 'Form: message field', name: message, widget: string }
-            - { label: 'Form: name field', name: name, widget: string }
-            - { label: 'Form: thank-you message', name: ok, widget: string }
-            - { label: 'Form: send button', name: send, widget: string }
-            - { label: 'Form: heading', name: title, widget: string }
         - { label: 'Contact section heading', name: contactSection, widget: string }
         - { label: 'Saturday (day group)', name: daySaturday, widget: string }
         - { label: 'Sunday (day group)', name: daySunday, widget: string }
         - { label: 'Weekdays (day group)', name: dayWeekday, widget: string }
         - { label: 'Email address field', name: emailAddress, widget: string }
-        - { label: 'EthicsPoint line', name: ethicsName, widget: string }
-        - { label: '“Report online” link', name: ethicsReport, widget: string }
         - { label: 'Events heading', name: eventsTitle, widget: string }
         - { label: 'Facility request link text', name: facilityRequest, widget: string }
         - { label: 'Untranslated-page notice', name: fallbackBanner, widget: text }
@@ -848,7 +785,6 @@ collections:
             - { label: 'Footer: parish name', name: parish, widget: string }
             - { label: 'Footer: phone heading', name: phone, widget: string }
         - { label: 'Full-calendar button', name: fullCalendar, widget: string }
-        - { label: 'Giving card text', name: givingBlurb, widget: string }
         - { label: 'Word for “goal”', name: goalWord, widget: string }
         - label: 'Hero'
           name: hero
@@ -864,15 +800,10 @@ collections:
           name: nav
           widget: object
           fields:
-            - { label: 'Menu: About', name: about, widget: string }
             - { label: 'Menu: Call button', name: call, widget: string }
             - { label: 'Menu: Contact', name: contact, widget: string }
-            - { label: 'Menu: Faith Formation', name: formation, widget: string }
             - { label: 'Menu: Giving button', name: giving, widget: string }
-            - { label: 'Menu: Mass Times', name: massTimes, widget: string }
-            - { label: 'Menu: Join Us', name: ministry, widget: string }
             - { label: 'Menu: Request Forms', name: requests, widget: string }
-            - { label: 'Menu: Sacraments', name: sacraments, widget: string }
         - { label: '“Next” arrow label', name: nextSlide, widget: string }
         - { label: 'English-home link (404 page)', name: notFoundEn, widget: string }
         - { label: 'Spanish-home link (404 page)', name: notFoundEs, widget: string }
@@ -881,13 +812,8 @@ collections:
         - { label: 'Word for “of” (in 41% of goal)', name: ofWord, widget: string }
         - { label: '“Phone” label', name: phoneLabel, widget: string }
         - { label: 'Footer Photos link', name: photosLink, widget: string }
-        - { label: 'Picnic card text (old)', name: picnicText, widget: string }
-        - { label: 'Picnic card title (old)', name: picnicTitle, widget: string }
         - { label: '“Raised as of” label', name: pledgedAsOf, widget: string }
-        - { label: 'Prayer card text (old)', name: prayerText, widget: string }
-        - { label: 'Prayer card title (old)', name: prayerTitle, widget: string }
         - { label: '“Previous” arrow label', name: prevSlide, widget: string }
-        - { label: 'Requests card text', name: requestsBlurb, widget: string }
         - label: 'Schedule'
           name: schedule
           widget: object
@@ -897,7 +823,6 @@ collections:
             - { label: 'Filter label', name: filterBy, widget: string }
             - { label: 'Mass schedule heading', name: massTimes, widget: string }
             - { label: 'Office hours heading', name: office, widget: string }
-            - { label: 'Presiders heading', name: presiders, widget: string }
             - { label: '“See full schedule” button', name: seeAll, widget: string }
             - { label: '“Stream Mass” button', name: stream, widget: string }
         - label: 'Search'
@@ -905,7 +830,6 @@ collections:
           widget: object
           fields:
             - { label: 'Search heading', name: label, widget: string }
-            - { label: 'Search box hint text', name: placeholder, widget: string }
         - { label: 'Search loading message', name: searchBuilding, widget: string }
         - { label: 'Slide button label (blind visitors)', name: showSlide, widget: string }
         - { label: '“Sign me up” button', name: signUp, widget: string }
@@ -922,8 +846,6 @@ collections:
         - { label: 'Table column: Day/Time', name: tableTime, widget: string }
         - { label: '“To be decided” label', name: tbd, widget: string }
         - { label: '“Today’s events” button', name: todayEvents, widget: string }
-        - { label: 'Ushers card text (old)', name: ushersText, widget: string }
-        - { label: 'Ushers card title (old)', name: ushersTitle, widget: string }
         - { label: '“View calendar” link', name: viewFacilities, widget: string }
         - { label: '“View profile” link', name: viewProfile, widget: string }
         - { label: 'Visit title', name: visitTitle, widget: string }
@@ -932,32 +854,12 @@ collections:
         file: src/data/ui.vi.json
         description: 'WARNING: wording only — never rename, remove, or add rows, or buttons and headings across the site go blank. A missing translation shows English automatically.'
         fields:
-        - label: 'Actions'
-          name: actions
-          widget: object
-          fields:
-            - { label: 'Bulletin card title', name: bulletin, widget: string }
-            - { label: 'Giving card title', name: giving, widget: string }
-            - { label: 'Request-forms card title', name: requests, widget: string }
-        - { label: 'Calendar closing sentence', name: calendarTail, widget: string }
         - { label: 'Get-in-touch card title', name: contactCard, widget: string }
-        - label: 'Contact form'
-          name: contactForm
-          widget: object
-          fields:
-            - { label: 'Form: email field', name: email, widget: string }
-            - { label: 'Form: message field', name: message, widget: string }
-            - { label: 'Form: name field', name: name, widget: string }
-            - { label: 'Form: thank-you message', name: ok, widget: string }
-            - { label: 'Form: send button', name: send, widget: string }
-            - { label: 'Form: heading', name: title, widget: string }
         - { label: 'Contact section heading', name: contactSection, widget: string }
         - { label: 'Saturday (day group)', name: daySaturday, widget: string }
         - { label: 'Sunday (day group)', name: daySunday, widget: string }
         - { label: 'Weekdays (day group)', name: dayWeekday, widget: string }
         - { label: 'Email address field', name: emailAddress, widget: string }
-        - { label: 'EthicsPoint line', name: ethicsName, widget: string }
-        - { label: '“Report online” link', name: ethicsReport, widget: string }
         - { label: 'Events heading', name: eventsTitle, widget: string }
         - { label: 'Facility request link text', name: facilityRequest, widget: string }
         - { label: 'Untranslated-page notice', name: fallbackBanner, widget: text }
@@ -974,7 +876,6 @@ collections:
             - { label: 'Footer: parish name', name: parish, widget: string }
             - { label: 'Footer: phone heading', name: phone, widget: string }
         - { label: 'Full-calendar button', name: fullCalendar, widget: string }
-        - { label: 'Giving card text', name: givingBlurb, widget: string }
         - { label: 'Word for “goal”', name: goalWord, widget: string }
         - label: 'Hero'
           name: hero
@@ -990,15 +891,10 @@ collections:
           name: nav
           widget: object
           fields:
-            - { label: 'Menu: About', name: about, widget: string }
             - { label: 'Menu: Call button', name: call, widget: string }
             - { label: 'Menu: Contact', name: contact, widget: string }
-            - { label: 'Menu: Faith Formation', name: formation, widget: string }
             - { label: 'Menu: Giving button', name: giving, widget: string }
-            - { label: 'Menu: Mass Times', name: massTimes, widget: string }
-            - { label: 'Menu: Join Us', name: ministry, widget: string }
             - { label: 'Menu: Request Forms', name: requests, widget: string }
-            - { label: 'Menu: Sacraments', name: sacraments, widget: string }
         - { label: '“Next” arrow label', name: nextSlide, widget: string }
         - { label: 'English-home link (404 page)', name: notFoundEn, widget: string }
         - { label: 'Spanish-home link (404 page)', name: notFoundEs, widget: string }
@@ -1007,13 +903,8 @@ collections:
         - { label: 'Word for “of” (in 41% of goal)', name: ofWord, widget: string }
         - { label: '“Phone” label', name: phoneLabel, widget: string }
         - { label: 'Footer Photos link', name: photosLink, widget: string }
-        - { label: 'Picnic card text (old)', name: picnicText, widget: string }
-        - { label: 'Picnic card title (old)', name: picnicTitle, widget: string }
         - { label: '“Raised as of” label', name: pledgedAsOf, widget: string }
-        - { label: 'Prayer card text (old)', name: prayerText, widget: string }
-        - { label: 'Prayer card title (old)', name: prayerTitle, widget: string }
         - { label: '“Previous” arrow label', name: prevSlide, widget: string }
-        - { label: 'Requests card text', name: requestsBlurb, widget: string }
         - label: 'Schedule'
           name: schedule
           widget: object
@@ -1023,7 +914,6 @@ collections:
             - { label: 'Filter label', name: filterBy, widget: string }
             - { label: 'Mass schedule heading', name: massTimes, widget: string }
             - { label: 'Office hours heading', name: office, widget: string }
-            - { label: 'Presiders heading', name: presiders, widget: string }
             - { label: '“See full schedule” button', name: seeAll, widget: string }
             - { label: '“Stream Mass” button', name: stream, widget: string }
         - label: 'Search'
@@ -1031,7 +921,6 @@ collections:
           widget: object
           fields:
             - { label: 'Search heading', name: label, widget: string }
-            - { label: 'Search box hint text', name: placeholder, widget: string }
         - { label: 'Search loading message', name: searchBuilding, widget: string }
         - { label: 'Slide button label (blind visitors)', name: showSlide, widget: string }
         - { label: '“Sign me up” button', name: signUp, widget: string }
@@ -1048,8 +937,6 @@ collections:
         - { label: 'Table column: Day/Time', name: tableTime, widget: string }
         - { label: '“To be decided” label', name: tbd, widget: string }
         - { label: '“Today’s events” button', name: todayEvents, widget: string }
-        - { label: 'Ushers card text (old)', name: ushersText, widget: string }
-        - { label: 'Ushers card title (old)', name: ushersTitle, widget: string }
         - { label: '“View calendar” link', name: viewFacilities, widget: string }
         - { label: '“View profile” link', name: viewProfile, widget: string }
         - { label: 'Visit title', name: visitTitle, widget: string }

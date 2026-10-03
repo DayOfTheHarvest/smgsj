@@ -1,10 +1,5 @@
 {
   "nav": {
-    "about": "Giới Thiệu",
-    "sacraments": "Các Bí Tích",
-    "formation": "Giáo Lý Đức Tin",
-    "ministry": "Các Hội Đoàn",
-    "massTimes": "Giờ Lễ",
     "contact": "Liên Lạc",
     "requests": "Đơn Xin",
     "giving": "Dâng Hiến",
@@ -14,25 +9,18 @@
     "welcome": "Chào mừng đến Giáo xứ Thánh Maria Goretti!",
     "subtitle": "Một cộng đoàn Công giáo tam ngữ đầy sức sống trên đường Senter — tất cả đều được chào đón."
   },
-  "actions": {
-    "bulletin": "Bản Tin",
-    "giving": "Dâng Hiến Online",
-    "requests": "Đơn Xin"
-  },
   "schedule": {
     "massTimes": "Giờ Lễ",
     "confession": "Giờ Giải Tội",
     "office": "Giờ Văn Phòng",
     "stream": "Thánh Lễ Trực Tuyến",
-    "presiders": "Lịch Dâng Lễ",
     "seeAll": "Xem lịch đầy đủ",
     "filterBy": "Xem Lễ theo:",
     "all": "Tất cả ngôn ngữ"
   },
   "fallbackBanner": "Một số phần của trang này có thể chưa được dịch. Các phần chưa dịch được hiển thị bằng tiếng Anh.",
   "search": {
-    "label": "Tìm kiếm",
-    "placeholder": "Tìm kiếm trong trang này…"
+    "label": "Tìm kiếm"
   },
   "footer": {
     "parish": "Giáo xứ Thánh Maria Goretti",
@@ -42,28 +30,9 @@
     "email": "Email",
     "office": "Văn Phòng Giáo Xứ"
   },
-  "contactForm": {
-    "title": "Gửi tin nhắn cho chúng tôi",
-    "name": "Tên",
-    "email": "Email",
-    "message": "Tin nhắn",
-    "send": "Gửi",
-    "ok": "Cảm ơn — văn phòng giáo xứ sẽ sớm trả lời."
-  },
-  "givingBlurb": "Hỗ trợ sứ mạng của giáo xứ chúng ta trực tuyến.",
-  "requestsBlurb": "Tang lễ, thuê hội trường, chứng chỉ, rửa tội và ghi danh giáo lý.",
   "eventsTitle": "Sự Kiện",
-  "picnicTitle": "Picnic Giáo Xứ",
-  "picnicText": "Xem bản tin để biết ngày và chi tiết.",
-  "prayerTitle": "Nhóm Cầu Nguyện",
-  "prayerText": "Xem bản tin để biết giờ họp.",
-  "ushersTitle": "Cần Tình Nguyện Viên — Hướng Dẫn",
-  "ushersText": "Hãy đáp lại lời mời phục vụ.",
-  "calendarTail": "Đối với các sự kiện cá nhân, vui lòng gọi văn phòng giáo xứ.",
   "staffTitle": "Nhân Sự",
   "staffDir": "Danh bạ nhân sự",
-  "ethicsName": "EthicsPoint (Trẻ Em & Người Lớn Dễ Bị Tổn Thương)",
-  "ethicsReport": "Báo cáo trực tuyến",
   "searchBuilding": "Chỉ mục tìm kiếm đang được tạo — vui lòng dùng điều hướng.",
   "stayTitle": "Kết Nối với SMG",
   "stayText": "Nhập thông tin liên lạc bên dưới để nhận email và tin nhắn từ giáo xứ.",

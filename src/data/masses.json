@@ -1,5 +1,4 @@
 {
-  "week_of": "2026-10-11",
   "masses": [
     {
       "service": "Saturday",
@@ -216,6 +215,5 @@
     "mode": "schedule",
     "image": "",
     "link": ""
-  },
-  "custom": []
+  }
 }

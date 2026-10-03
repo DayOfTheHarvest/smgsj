@@ -1,10 +1,5 @@
 {
   "nav": {
-    "about": "About",
-    "sacraments": "Sacraments",
-    "formation": "Faith Formation",
-    "ministry": "Ministry",
-    "massTimes": "Mass Times",
     "contact": "Contact",
     "requests": "Request Forms",
     "giving": "Giving",
@@ -14,25 +9,18 @@
     "welcome": "Welcome to St. Maria Goretti Parish!",
     "subtitle": "A vibrant trilingual Catholic community on Senter Road — all are welcome."
   },
-  "actions": {
-    "bulletin": "Bulletin",
-    "giving": "Online Giving",
-    "requests": "Request Forms"
-  },
   "schedule": {
     "massTimes": "Mass Times",
     "confession": "Confession Times",
     "office": "Office Hours",
     "stream": "Stream Mass",
-    "presiders": "Presider Schedule",
     "seeAll": "See full schedule",
     "filterBy": "Show Masses in:",
     "all": "All languages"
   },
   "fallbackBanner": "Parts of this page may not be translated yet. Untranslated sections are shown in English.",
   "search": {
-    "label": "Search",
-    "placeholder": "Search this site…"
+    "label": "Search"
   },
   "footer": {
     "parish": "Saint Maria Goretti Catholic Parish",
@@ -42,28 +30,9 @@
     "email": "Email",
     "office": "Parish Office"
   },
-  "contactForm": {
-    "title": "Send us a message",
-    "name": "Name",
-    "email": "Email",
-    "message": "Message",
-    "send": "Send",
-    "ok": "Thank you — the parish office will reply soon."
-  },
-  "givingBlurb": "Support our parish mission online.",
-  "requestsBlurb": "Funeral, hall rental, certificates, baptism and catechetical registration.",
   "eventsTitle": "Events",
-  "picnicTitle": "Church Picnic",
-  "picnicText": "See the bulletin for date and details.",
-  "prayerTitle": "Prayer Group",
-  "prayerText": "See the bulletin for meeting times.",
-  "ushersTitle": "Volunteers Needed — Ushers",
-  "ushersText": "Answer the call to serve.",
-  "calendarTail": "For individual events, please call the parish office.",
   "staffTitle": "Staff",
   "staffDir": "Staff Directory",
-  "ethicsName": "EthicsPoint (Children & Vulnerable Adults)",
-  "ethicsReport": "Report online",
   "searchBuilding": "Search index is building — please use navigation.",
   "stayTitle": "Stay Connected with SMG",
   "stayText": "Enter contact info below to receive e-mail and text message from the parish.",

@@ -1,10 +1,5 @@
 {
   "nav": {
-    "about": "Nosotros",
-    "sacraments": "Sacramentos",
-    "formation": "Formación en la Fe",
-    "ministry": "Ministerios",
-    "massTimes": "Horario de Misas",
     "contact": "Contacto",
     "requests": "Formularios",
     "giving": "Donar",
@@ -14,25 +9,18 @@
     "welcome": "¡Bienvenidos a la Parroquia Santa María Goretti!",
     "subtitle": "Una vibrante comunidad católica trilingüe en Senter Road — todos son bienvenidos."
   },
-  "actions": {
-    "bulletin": "Boletín",
-    "giving": "Donar en línea",
-    "requests": "Formularios"
-  },
   "schedule": {
     "massTimes": "Horario de Misas",
     "confession": "Horario de Confesiones",
     "office": "Horario de Oficina",
     "stream": "Misa en vivo",
-    "presiders": "Celebrantes",
     "seeAll": "Ver horario completo",
     "filterBy": "Mostrar Misas en:",
     "all": "Todos los idiomas"
   },
   "fallbackBanner": "Es posible que partes de esta página aún no estén traducidas. Las secciones no traducidas se muestran en inglés.",
   "search": {
-    "label": "Buscar",
-    "placeholder": "Buscar en este sitio…"
+    "label": "Buscar"
   },
   "footer": {
     "parish": "Parroquia Católica Santa María Goretti",
@@ -42,28 +30,9 @@
     "email": "Correo",
     "office": "Oficina Parroquial"
   },
-  "contactForm": {
-    "title": "Envíenos un mensaje",
-    "name": "Nombre",
-    "email": "Correo electrónico",
-    "message": "Mensaje",
-    "send": "Enviar",
-    "ok": "Gracias — la oficina parroquial responderá pronto."
-  },
-  "givingBlurb": "Apoye la misión de nuestra parroquia en línea.",
-  "requestsBlurb": "Funeral, alquiler del salón, certificados, bautismo e inscripción catequética.",
   "eventsTitle": "Eventos",
-  "picnicTitle": "Picnic Parroquial",
-  "picnicText": "Consulte el boletín para la fecha y los detalles.",
-  "prayerTitle": "Grupo de Oración",
-  "prayerText": "Consulte el boletín para los horarios de reunión.",
-  "ushersTitle": "Se Necesitan Voluntarios — Ujieres",
-  "ushersText": "Responda al llamado a servir.",
-  "calendarTail": "Para eventos individuales, llame a la oficina parroquial.",
   "staffTitle": "Personal",
   "staffDir": "Directorio del personal",
-  "ethicsName": "EthicsPoint (Niños y Adultos Vulnerables)",
-  "ethicsReport": "Denunciar en línea",
   "searchBuilding": "El índice de búsqueda se está creando — use la navegación.",
   "stayTitle": "Mantente Conectado con SMG",
   "stayText": "Ingrese sus datos abajo para recibir correos y mensajes de texto de la parroquia.",

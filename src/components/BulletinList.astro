@@ -1,7 +1,7 @@
 ---
 import bulletinsData from '../data/bulletins.json';
-interface Props { ui: any; limit?: number; showHeading?: boolean; }
-const { ui, limit = 5, showHeading = false } = Astro.props;
+interface Props { limit?: number; }
+const { limit = 5 } = Astro.props;
 const data = bulletinsData as any;
 // Show bulletins from the past N weeks (staff-set window; 0 = show all).
 const weeks = Number(data.weeks ?? 3);
@@ -13,7 +13,6 @@ const items = ((data.bulletins ?? []) as Array<any>)
   })
   .slice(0, limit);
 ---
-{showHeading && <h2>{ui.actions.bulletin}</h2>}
 <ul class="bulletin-list">
   {items.map((b) => (
     <li><a href={b.url}>{b.label}</a></li>

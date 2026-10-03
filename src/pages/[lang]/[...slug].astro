@@ -70,8 +70,8 @@ const galleryList = ((galleriesData as any).galleries as Array<any>) ?? [];
           <iframe title="Map — St. Maria Goretti Parish" src="https://www.google.com/maps?q=2980+Senter+Road,+San+Jose,+CA+95111&output=embed" width="100%" height="450" loading="lazy"></iframe>
         </div>
       </section>
-      <section aria-label={ui.contactForm.title}>
-        <h2>{ui.contactForm.title}</h2>
+      <section aria-label={ui.nav.contact}>
+        <h2>{ui.nav.contact}</h2>
         <div class="cards">
           <article class="card">
             <div class="card-head"><Icon name="phone" /><h3>{ui.nav.call}</h3></div>
@@ -115,5 +115,4 @@ const galleryList = ((galleriesData as any).galleries as Array<any>) ?? [];
       </ul>
     </section>
   )}
-  {slug === 'bulletins' ? <><h2>{ui.actions.bulletin}</h2><BulletinList ui={ui} /></> : null}
 </Base>

@@ -15,7 +15,7 @@ const hrefFor = (link: string) => resolveLink(link, lang);
     <article class="card">
       {c.icon ? <div class="card-head"><Icon name={c.icon} /><h2>{c.title?.[lang] || c.title?.en}</h2></div> : <h2>{c.title?.[lang] || c.title?.en}</h2>}
       {c.kind === 'bulletins' ? (
-        <BulletinList ui={ui} limit={5} />
+        <BulletinList limit={5} />
       ) : (
         <>
           {(c.text?.[lang] || c.text?.en) && <p>{c.text?.[lang] || c.text?.en}</p>}
